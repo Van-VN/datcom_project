@@ -5,8 +5,273 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="aa2d2fa0-9bcd-466f-b441-762e2adce596" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controllers/cart.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/cart.controller.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/admin.controller.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/cart.controller.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/discount.controller.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/home.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/home.controller.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/product.controller.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/profileUser.controller.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/user.controller.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/middlewares/home.middlewares.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/middlewares/home.middlewares.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/ConnectDB.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/ConnectDB.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/schemas/category.model.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/schemas/discount.model.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/schemas/image.model.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/schemas/orderDetail.model.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/schemas/product.model.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/schemas/productCart.model.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/schemas/user.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/schemas/user.model.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routers/router.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/routers/router.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/Chitietsp1.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/chitietsp2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/chitietsp3.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/css/bootstrap-custom.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/css/bootstrap.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/css/bootstrap.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/schemas/class.model.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/css/cart.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/css/danhmuc.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/css/main.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/css/pay.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/css/responsive.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/css/sale.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/css/ui.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/css/ui.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/css/uikit.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/dangky.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/dangnhap.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/danhmuc.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/danhmuc2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/danhmuc3.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/danhmuccn.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/danhmuclist.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/demo.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/dienthoai.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/fonts/fontawesome/css/all.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/fonts/fontawesome/css/all.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/fonts/fontawesome/css/brands.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/fonts/fontawesome/css/brands.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/fonts/fontawesome/css/fontawesome.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/fonts/fontawesome/css/regular.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/fonts/fontawesome/css/regular.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/fonts/fontawesome/css/solid.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/fonts/fontawesome/css/solid.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/fonts/fontawesome/css/svg-with-js.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/fonts/fontawesome/css/svg-with-js.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/fonts/fontawesome/css/v4-shims.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/fonts/fontawesome/scss/_animated.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/fonts/fontawesome/scss/_bordered-pulled.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/fonts/fontawesome/scss/_core.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/fonts/fontawesome/scss/_fixed-width.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/fonts/fontawesome/scss/_icons.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/fonts/fontawesome/scss/_larger.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/fonts/fontawesome/scss/_list.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/fonts/fontawesome/scss/_mixins.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/fonts/fontawesome/scss/_rotated-flipped.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/fonts/fontawesome/scss/_screen-reader.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/fonts/fontawesome/scss/_shims.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/fonts/fontawesome/scss/_stacked.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/fonts/fontawesome/scss/_variables.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/fonts/fontawesome/scss/brands.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/fonts/fontawesome/scss/fontawesome.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/fonts/fontawesome/scss/regular.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/fonts/fontawesome/scss/solid.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/fonts/fontawesome/scss/v4-shims.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/fonts/fontawesome/webfonts/fa-brands-400.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/fonts/fontawesome/webfonts/fa-brands-400.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/fonts/fontawesome/webfonts/fa-brands-400.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/fonts/fontawesome/webfonts/fa-brands-400.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/fonts/fontawesome/webfonts/fa-brands-400.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/fonts/fontawesome/webfonts/fa-regular-400.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/fonts/fontawesome/webfonts/fa-regular-400.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/fonts/fontawesome/webfonts/fa-regular-400.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/fonts/fontawesome/webfonts/fa-regular-400.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/fonts/fontawesome/webfonts/fa-regular-400.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/fonts/fontawesome/webfonts/fa-solid-900.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/fonts/fontawesome/webfonts/fa-solid-900.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/fonts/fontawesome/webfonts/fa-solid-900.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/fonts/fontawesome/webfonts/fa-solid-900.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/fonts/fontawesome/webfonts/fa-solid-900.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/fonts/roboto/Roboto-Bold.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/fonts/roboto/Roboto-Light.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/fonts/roboto/Roboto-Medium.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/fonts/roboto/Roboto-Regular.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/fonts/roboto/Roboto-Thin.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/fonts/roboto/font.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/giohang.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/images/apple-touch-icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/images/appstore.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/images/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/images/items/1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/images/items/2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/images/items/3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/images/items/4.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/images/items/5.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/images/items/6.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/images/items/7.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/images/items/comp.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/images/items/item-sm.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/images/items/item-sm.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/images/logo-white.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/images/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/images/logo@2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/images/playmarket.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/img/ipX.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/js/bootstrap.bundle.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/js/chitietsp.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/js/form.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/js/formdn.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/js/giohang.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/js/jquery-2.0.0.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/js/script.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/listkhac.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/listlt.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/listpk.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/maytinhbang.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/plugins/owlcarousel/assets/ajax-loader.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/plugins/owlcarousel/assets/owl.carousel.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/plugins/owlcarousel/assets/owl.theme.default.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/plugins/owlcarousel/assets/owl.video.play.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/plugins/owlcarousel/owl.carousel.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/plugins/owlcarousel/owl.carousel.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/plugins/owlcarousel/sass/_animate.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/plugins/owlcarousel/sass/_autoheight.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/plugins/owlcarousel/sass/_core.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/plugins/owlcarousel/sass/_lazyload.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/plugins/owlcarousel/sass/_theme.default.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/plugins/owlcarousel/sass/_theme.green.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/plugins/owlcarousel/sass/_theme.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/plugins/owlcarousel/sass/_video.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/plugins/owlcarousel/sass/owl.carousel.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/plugins/owlcarousel/sass/owl.theme.default.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/plugins/owlcarousel/sass/owl.theme.green.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/plugins/slickslider/ajax-loader.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/plugins/slickslider/fonts/slick.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/plugins/slickslider/fonts/slick.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/plugins/slickslider/fonts/slick.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/plugins/slickslider/fonts/slick.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/plugins/slickslider/slick-theme.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/plugins/slickslider/slick.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/plugins/slickslider/slick.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/plugins/slickslider/slick.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/quenmk.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/sass/_variables-custom.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/sass/bootstrap-assets/_alert.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/sass/bootstrap-assets/_badge.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/sass/bootstrap-assets/_bootstrap.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/sass/bootstrap-assets/_breadcrumb.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/sass/bootstrap-assets/_button-group.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/sass/bootstrap-assets/_buttons.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/sass/bootstrap-assets/_card.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/sass/bootstrap-assets/_carousel.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/sass/bootstrap-assets/_close.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/sass/bootstrap-assets/_code.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/sass/bootstrap-assets/_custom-forms.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/sass/bootstrap-assets/_dropdown.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/sass/bootstrap-assets/_forms.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/sass/bootstrap-assets/_functions.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/sass/bootstrap-assets/_grid.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/sass/bootstrap-assets/_images.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/sass/bootstrap-assets/_input-group.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/sass/bootstrap-assets/_jumbotron.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/sass/bootstrap-assets/_list-group.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/sass/bootstrap-assets/_media.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/sass/bootstrap-assets/_mixins.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/sass/bootstrap-assets/_modal.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/sass/bootstrap-assets/_nav.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/sass/bootstrap-assets/_navbar.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/sass/bootstrap-assets/_pagination.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/sass/bootstrap-assets/_popover.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/sass/bootstrap-assets/_print.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/sass/bootstrap-assets/_progress.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/sass/bootstrap-assets/_reboot.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/sass/bootstrap-assets/_root.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/sass/bootstrap-assets/_spinners.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/sass/bootstrap-assets/_tables.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/sass/bootstrap-assets/_toasts.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/sass/bootstrap-assets/_tooltip.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/sass/bootstrap-assets/_transitions.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/sass/bootstrap-assets/_type.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/sass/bootstrap-assets/_utilities.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/sass/bootstrap-assets/_variables.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/sass/bootstrap-assets/mixins/_alert.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/sass/bootstrap-assets/mixins/_background-variant.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/sass/bootstrap-assets/mixins/_badge.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/sass/bootstrap-assets/mixins/_border-radius.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/sass/bootstrap-assets/mixins/_box-shadow.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/sass/bootstrap-assets/mixins/_breakpoints.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/sass/bootstrap-assets/mixins/_buttons.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/sass/bootstrap-assets/mixins/_caret.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/sass/bootstrap-assets/mixins/_clearfix.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/sass/bootstrap-assets/mixins/_deprecate.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/sass/bootstrap-assets/mixins/_float.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/sass/bootstrap-assets/mixins/_forms.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/sass/bootstrap-assets/mixins/_gradients.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/sass/bootstrap-assets/mixins/_grid-framework.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/sass/bootstrap-assets/mixins/_grid.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/sass/bootstrap-assets/mixins/_hover.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/sass/bootstrap-assets/mixins/_image.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/sass/bootstrap-assets/mixins/_list-group.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/sass/bootstrap-assets/mixins/_lists.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/sass/bootstrap-assets/mixins/_nav-divider.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/sass/bootstrap-assets/mixins/_pagination.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/sass/bootstrap-assets/mixins/_reset-text.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/sass/bootstrap-assets/mixins/_resize.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/sass/bootstrap-assets/mixins/_screen-reader.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/sass/bootstrap-assets/mixins/_size.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/sass/bootstrap-assets/mixins/_table-row.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/sass/bootstrap-assets/mixins/_text-emphasis.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/sass/bootstrap-assets/mixins/_text-hide.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/sass/bootstrap-assets/mixins/_text-truncate.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/sass/bootstrap-assets/mixins/_transition.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/sass/bootstrap-assets/mixins/_visibility.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/sass/bootstrap-assets/utilities/_align.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/sass/bootstrap-assets/utilities/_background.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/sass/bootstrap-assets/utilities/_borders.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/sass/bootstrap-assets/utilities/_clearfix.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/sass/bootstrap-assets/utilities/_display.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/sass/bootstrap-assets/utilities/_embed.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/sass/bootstrap-assets/utilities/_flex.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/sass/bootstrap-assets/utilities/_float.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/sass/bootstrap-assets/utilities/_overflow.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/sass/bootstrap-assets/utilities/_position.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/sass/bootstrap-assets/utilities/_screenreaders.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/sass/bootstrap-assets/utilities/_shadows.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/sass/bootstrap-assets/utilities/_sizing.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/sass/bootstrap-assets/utilities/_spacing.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/sass/bootstrap-assets/utilities/_stretched-link.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/sass/bootstrap-assets/utilities/_text.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/sass/bootstrap-assets/utilities/_visibility.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/sass/bootstrap-assets/vendor/_rfs.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/sass/bootstrap.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/sass/responsive.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/sass/ui-assets/components/_buttons.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/sass/ui-assets/components/_cards-product.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/sass/ui-assets/components/_elements.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/sass/ui-assets/components/_forms.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/sass/ui-assets/components/_items.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/sass/ui-assets/components/_lists.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/sass/ui-assets/components/_menu.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/sass/ui-assets/components/_plugin-styles.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/sass/ui-assets/helpers/_bg.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/sass/ui-assets/helpers/_helper-classes.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/sass/ui-assets/helpers/_mixins.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/sass/ui-assets/helpers/_typography.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/sass/ui-assets/pages/_page-account.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/sass/ui-assets/pages/_page-base.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/sass/ui-assets/pages/_page-detail.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/sass/ui-assets/pages/_page-home.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/sass/ui-assets/pages/_page-listing.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/sass/ui-assets/pages/_page-order.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/sass/ui-assets/sections/_footer.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/sass/ui-assets/sections/_header.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/sass/ui-assets/sections/_sidebar.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/sass/ui.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/script/cart.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_prj/script/danhmuc.js" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,9 +295,6 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/src/views/products.ejs" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
-  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -44,25 +306,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;editUser&quot;,
-    &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;16.13.0&quot;,
-    &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;16.18.37&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/macos/Documents/codegym/shopping_project&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;/Users/macos/Documents/codegym/shopping_project/node_modules/typescript/lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "editUser",
+    "javascript.nodejs.core.library.configured.version": "16.13.0",
+    "javascript.nodejs.core.library.typings.version": "16.18.37",
+    "last_opened_file_path": "/Users/macos/Documents/shopping_project",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "ts.external.directory.path": "/Users/macos/Documents/shopping_project/node_modules/typescript/lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\shopping_project\src\views" />
@@ -113,6 +375,7 @@
       <workItem from="1687836720666" duration="431000" />
       <workItem from="1687837185659" duration="514000" />
       <workItem from="1687939133885" duration="26563000" />
+      <workItem from="1688529314706" duration="1061000" />
     </task>
     <servers />
   </component>

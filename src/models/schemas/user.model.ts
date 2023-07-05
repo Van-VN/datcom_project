@@ -5,7 +5,5 @@ const userSchema = new Schema({
     role: String,
     password: String,
 })
-
-
 const user = model("user", userSchema);
 export {user}

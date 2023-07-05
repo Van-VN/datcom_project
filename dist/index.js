@@ -19,7 +19,7 @@ db.connect().then(r => {
 });
 app.use(body_parser_1.default.json());
 app.use(body_parser_1.default.urlencoded({ extended: false }));
-app.use(express.static('./src/public'));
+app.use(express.static('./public'));
 app.use((0, connect_livereload_1.default)());
 app.use(body_parser_1.default.urlencoded({ extended: false }));
 app.use(body_parser_1.default.json());

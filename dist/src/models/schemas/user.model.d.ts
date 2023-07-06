@@ -24,38 +24,44 @@
 /// <reference types="mongoose/types/inferschematype" />
 import { Schema } from "mongoose";
 declare const User: import("mongoose").Model<{
+    role: string;
     name?: string;
-    className?: import("mongoose").Types.ObjectId;
-    role?: string;
+    fullName?: string;
     password?: string;
+    className?: string;
 }, {}, {}, {}, import("mongoose").Document<unknown, {}, {
+    role: string;
     name?: string;
-    className?: import("mongoose").Types.ObjectId;
-    role?: string;
+    fullName?: string;
     password?: string;
+    className?: string;
 }> & Omit<{
+    role: string;
     name?: string;
-    className?: import("mongoose").Types.ObjectId;
-    role?: string;
+    fullName?: string;
     password?: string;
+    className?: string;
 } & {
     _id: import("mongoose").Types.ObjectId;
 }, never>, Schema<any, import("mongoose").Model<any, any, any, any, any, any>, {}, {}, {}, {}, import("mongoose").DefaultSchemaOptions, {
+    role: string;
     name?: string;
-    className?: import("mongoose").Types.ObjectId;
-    role?: string;
+    fullName?: string;
     password?: string;
+    className?: string;
 }, import("mongoose").Document<unknown, {}, import("mongoose").FlatRecord<{
+    role: string;
     name?: string;
-    className?: import("mongoose").Types.ObjectId;
-    role?: string;
+    fullName?: string;
     password?: string;
+    className?: string;
 }>> & Omit<import("mongoose").FlatRecord<{
+    role: string;
     name?: string;
-    className?: import("mongoose").Types.ObjectId;
-    role?: string;
+    fullName?: string;
     password?: string;
+    className?: string;
 }> & {
     _id: import("mongoose").Types.ObjectId;
 }, never>>>;
-export { User };
+export default User;

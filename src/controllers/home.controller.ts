@@ -1,3 +1,4 @@
+import Food from "../models/schemas/food.model";
 import { initializeApp } from "firebase/app";
 import config from "../../firebase.config";
 import {
@@ -13,7 +14,8 @@ const storage = getStorage();
 class HomeController {
   static async getHomePage(req: any, res: any) {
     try {
-      return res.render("home");
+      const foods = await Food.find();
+      return res.render("home", { data: foods });
     } catch (err) {
       console.log(err);
     }
@@ -38,7 +40,14 @@ class HomeController {
       );
       const downloadURL = await getDownloadURL(snapshot.ref);
       // LẤY ĐƯỢC ẢNH FIREBASE
-        console.log(downloadURL);
+      const food = new Food({
+        name: req.body.name,
+        type: req.body.type,
+        des: req.body.des,
+        imageUrl: downloadURL,
+      });
+      await food.save();
+      res.redirect("/");
     } catch (err) {
       console.log(err.message);
     }

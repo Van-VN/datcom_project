@@ -1,11 +1,12 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.className = void 0;
 const mongoose_1 = require("mongoose");
-const classSchema = new mongoose_1.Schema({
+const foodSchema = new mongoose_1.Schema({
     name: String,
+    type: String,
+    des: String,
     imageUrl: String,
 });
-const className = (0, mongoose_1.model)("class", classSchema);
-exports.className = className;
+const Food = (0, mongoose_1.model)("class", foodSchema);
+exports.default = Food;
 //# sourceMappingURL=food.model.js.map

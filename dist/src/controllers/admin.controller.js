@@ -53,13 +53,27 @@ class AdminController {
         res.render("adminViews/adminFoodUpdate", { data: food });
     }
     static async updateFood(req, res) {
-        const foodId = req.params.id;
-        console.log(req.body);
-        const food = await food_model_1.default.findOne({ _id: foodId });
-        food.name = req.body.name;
-        food.type = req.body.type;
-        food.des = req.body.des;
-        await food.save();
+        if (req.file) {
+            const storageRef = (0, storage_1.ref)(storage, `files/${req.file.originalname}`);
+            const metadata = { contentType: req.file.mimetype };
+            const snapshot = await (0, storage_1.uploadBytesResumable)(storageRef, req.file.buffer, metadata);
+            const downloadURL = await (0, storage_1.getDownloadURL)(snapshot.ref);
+            const foodId = req.params.id;
+            const food = await food_model_1.default.findOne({ _id: foodId });
+            food.imageUrl = downloadURL;
+            food.name = req.body.name;
+            food.type = req.body.type;
+            food.des = req.body.des;
+            await food.save();
+        }
+        else {
+            const foodId = req.params.id;
+            const food = await food_model_1.default.findOne({ _id: foodId });
+            food.name = req.body.name;
+            food.type = req.body.type;
+            food.des = req.body.des;
+            await food.save();
+        }
         res.redirect("/admin/food");
     }
 }

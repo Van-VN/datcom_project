@@ -23,7 +23,7 @@
 /// <reference types="mongoose/types/virtuals" />
 /// <reference types="mongoose/types/inferschematype" />
 import { Schema } from "mongoose";
-declare const className: import("mongoose").Model<{
+declare const ClassName: import("mongoose").Model<{
     name?: string;
 }, {}, {}, {}, import("mongoose").Document<unknown, {}, {
     name?: string;
@@ -40,4 +40,4 @@ declare const className: import("mongoose").Model<{
 }> & {
     _id: import("mongoose").Types.ObjectId;
 }, never>>>;
-export { className };
+export { ClassName };

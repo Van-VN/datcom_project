@@ -24,20 +24,32 @@
 /// <reference types="mongoose/types/inferschematype" />
 import { Schema } from "mongoose";
 declare const Order: import("mongoose").Model<{
-    foods: any[];
+    dateOrder: Date;
+    foods: import("mongoose").Types.ObjectId[];
+    userID?: import("mongoose").Types.ObjectId;
 }, {}, {}, {}, import("mongoose").Document<unknown, {}, {
-    foods: any[];
+    dateOrder: Date;
+    foods: import("mongoose").Types.ObjectId[];
+    userID?: import("mongoose").Types.ObjectId;
 }> & Omit<{
-    foods: any[];
+    dateOrder: Date;
+    foods: import("mongoose").Types.ObjectId[];
+    userID?: import("mongoose").Types.ObjectId;
 } & {
     _id: import("mongoose").Types.ObjectId;
 }, never>, Schema<any, import("mongoose").Model<any, any, any, any, any, any>, {}, {}, {}, {}, import("mongoose").DefaultSchemaOptions, {
-    foods: any[];
+    dateOrder: Date;
+    foods: import("mongoose").Types.ObjectId[];
+    userID?: import("mongoose").Types.ObjectId;
 }, import("mongoose").Document<unknown, {}, import("mongoose").FlatRecord<{
-    foods: any[];
+    dateOrder: Date;
+    foods: import("mongoose").Types.ObjectId[];
+    userID?: import("mongoose").Types.ObjectId;
 }>> & Omit<import("mongoose").FlatRecord<{
-    foods: any[];
+    dateOrder: Date;
+    foods: import("mongoose").Types.ObjectId[];
+    userID?: import("mongoose").Types.ObjectId;
 }> & {
     _id: import("mongoose").Types.ObjectId;
 }, never>>>;
-export default Order;
+export { Order };

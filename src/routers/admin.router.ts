@@ -17,6 +17,7 @@ const upload = multer({
 
 const adminRouter = Router();
 import AdminController from "../controllers/admin.controller";
+import { Admin } from "mongodb";
 
 adminRouter.get("/admin", AdminController.showAdminPage);
 adminRouter.get("/admin/user/create", AdminController.showCreateUser);
@@ -33,5 +34,6 @@ adminRouter.post(
   upload.single("picture"),
   AdminController.updateFood
 );
+adminRouter.get('/admin/food/delete/:id', AdminController.deleteFood)
 
 export default adminRouter;

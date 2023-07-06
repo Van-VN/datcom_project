@@ -22,5 +22,6 @@ adminRouter.post("/admin/create", upload.single("picture"), admin_controller_1.d
 adminRouter.get("/admin/food", admin_controller_1.default.showFoodList);
 adminRouter.get("/admin/food/edit/:id", admin_controller_1.default.showUpdateFood);
 adminRouter.post("/admin/food/edit/:id", upload.single("picture"), admin_controller_1.default.updateFood);
+adminRouter.get('/admin/food/delete/:id', admin_controller_1.default.deleteFood);
 exports.default = adminRouter;
 //# sourceMappingURL=admin.router.js.map

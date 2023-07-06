@@ -19,13 +19,27 @@ class AdminController {
 
   static async showUserList(req: any, res: any) {
     const users = await User.find();
-    res.render("adminViews/adminUserList", { data: users });
+    if (users) {
+      res.render("adminViews/adminUserList", { data: users });
+    } else {
+      res.end(404);
+    }
   }
 
   static async showUserEdit(req: any, res: any) {
+    // const regex = /^[a-z0-9]{24}$/;
+    // const check = regex.test(req.params.id);
+    // if (check) {
     const userId = req.params.id;
     const user = await User.findById(userId);
-    res.render("adminViews/adminUserEdit", { data: user });
+    if (user) {
+      res.render("adminViews/adminUserEdit", { data: user });
+    } else {
+      res.end(404);
+    }
+    // } else {
+    //   res.end(404);
+    // }
   }
 
   static async updateUser(req: any, res: any) {
@@ -40,12 +54,23 @@ class AdminController {
         user.password = req.body.password;
         user.className = req.body.userclass;
         await user.save();
+        res.redirect("/admin/user");
       } else {
         res.redirect("/");
       }
     } catch (err) {
       res.redirect("/");
       console.log(err.message);
+    }
+  }
+
+  static async deleteUser(req: any, res: any) {
+    const user = User.findOne({ _id: req.params.id });
+    if (user) {
+      await User.findByIdAndDelete({ _id: req.params.id });
+      res.redirect("/admin/user");
+    } else {
+      res.redirect("/admin/user");
     }
   }
 

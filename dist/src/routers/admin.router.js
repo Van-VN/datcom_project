@@ -27,5 +27,7 @@ adminRouter.get("/admin/food/delete/:id", admin_controller_1.default.deleteFood)
 adminRouter.post("/admin/updatestatus/:id", admin_controller_1.default.updateStatus);
 adminRouter.get("/admin/user", admin_controller_1.default.showUserList);
 adminRouter.get("/admin/user/edit/:id", admin_controller_1.default.showUserEdit);
+adminRouter.post("/admin/user/edit/:id", admin_controller_1.default.updateUser);
+adminRouter.get("/admin/user/delete/:id", admin_controller_1.default.deleteUser);
 exports.default = adminRouter;
 //# sourceMappingURL=admin.router.js.map

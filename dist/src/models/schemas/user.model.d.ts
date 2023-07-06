@@ -23,33 +23,39 @@
 /// <reference types="mongoose/types/virtuals" />
 /// <reference types="mongoose/types/inferschematype" />
 import { Schema } from "mongoose";
-declare const user: import("mongoose").Model<{
+declare const User: import("mongoose").Model<{
     name?: string;
+    className?: import("mongoose").Types.ObjectId;
     role?: string;
     password?: string;
 }, {}, {}, {}, import("mongoose").Document<unknown, {}, {
     name?: string;
+    className?: import("mongoose").Types.ObjectId;
     role?: string;
     password?: string;
 }> & Omit<{
     name?: string;
+    className?: import("mongoose").Types.ObjectId;
     role?: string;
     password?: string;
 } & {
     _id: import("mongoose").Types.ObjectId;
 }, never>, Schema<any, import("mongoose").Model<any, any, any, any, any, any>, {}, {}, {}, {}, import("mongoose").DefaultSchemaOptions, {
     name?: string;
+    className?: import("mongoose").Types.ObjectId;
     role?: string;
     password?: string;
 }, import("mongoose").Document<unknown, {}, import("mongoose").FlatRecord<{
     name?: string;
+    className?: import("mongoose").Types.ObjectId;
     role?: string;
     password?: string;
 }>> & Omit<import("mongoose").FlatRecord<{
     name?: string;
+    className?: import("mongoose").Types.ObjectId;
     role?: string;
     password?: string;
 }> & {
     _id: import("mongoose").Types.ObjectId;
 }, never>>>;
-export { user };
+export { User };

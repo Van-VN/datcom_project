@@ -1,0 +1,35 @@
+* {
+  box-sizing: border-box;
+}
+
+.card-form {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.card {
+  width: 100%;
+}
+
+@media only screen and (max-width: 1000px) {
+  .card-form {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .card-form {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .card-form {
+    display: inline-block;
+  }
+
+  .card {
+    margin-bottom: 20px;
+  }
+}

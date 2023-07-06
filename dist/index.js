@@ -12,19 +12,19 @@ const connect_flash_1 = __importDefault(require("connect-flash"));
 const app = express();
 const port = 3000;
 const db = new ConnectDB_1.ConnectDB();
-db.connect().then(r => {
+db.connect()
+    .then((r) => {
     console.log(`connect database successfully`);
-}).catch(err => {
+})
+    .catch((err) => {
     console.log(`connect database error`);
 });
+app.use(body_parser_1.default.urlencoded({ extended: true }));
 app.use(body_parser_1.default.json());
-app.use(body_parser_1.default.urlencoded({ extended: false }));
-app.use(express.static('./public'));
+app.use(express.static("./public"));
 app.use((0, connect_livereload_1.default)());
-app.use(body_parser_1.default.urlencoded({ extended: false }));
-app.use(body_parser_1.default.json());
 app.use((0, connect_flash_1.default)());
-app.set('view engine', "ejs");
+app.set("view engine", "ejs");
 app.set("views", "./src/views");
 app.use(router_1.default);
 app.listen(port, () => {

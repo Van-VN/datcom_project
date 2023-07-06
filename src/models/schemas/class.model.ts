@@ -1,8 +1,8 @@
 import {Schema, model} from "mongoose";
 
 const classSchema = new Schema({
-    name: String,
+    name: String
 })
 
-const className = model("class", classSchema);
-export {className}
+const ClassName = model("className", classSchema);
+export {ClassName}

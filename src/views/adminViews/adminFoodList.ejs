@@ -125,15 +125,11 @@
   </body>
   <script>
     function getStatus(id) {
-      const isChecked = $(this).is(":checked");
       const state = document.getElementById(id).checked;
       $.ajax({
-        //   url: `/admin/updatestatus/${id}`,
-        //   type: "POST",
-        //   data: { isChecked, documentId },
-        //   success: function(response) {
-        //     console.log(response);
-        //   }
+          url: `/admin/updatestatus/${id}`,
+          type: "POST",
+          data: { state, id },
       });
     }
   </script>

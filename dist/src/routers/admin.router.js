@@ -23,6 +23,6 @@ adminRouter.get("/admin/food", admin_controller_1.default.showFoodList);
 adminRouter.get("/admin/food/edit/:id", admin_controller_1.default.showUpdateFood);
 adminRouter.post("/admin/food/edit/:id", upload.single("picture"), admin_controller_1.default.updateFood);
 adminRouter.get('/admin/food/delete/:id', admin_controller_1.default.deleteFood);
-adminRouter.post('/admin/updatestatus', admin_controller_1.default.updateStatus);
+adminRouter.post('/admin/updatestatus/:id', admin_controller_1.default.updateStatus);
 exports.default = adminRouter;
 //# sourceMappingURL=admin.router.js.map

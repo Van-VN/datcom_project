@@ -23,27 +23,39 @@
 /// <reference types="mongoose/types/virtuals" />
 /// <reference types="mongoose/types/inferschematype" />
 import { Schema } from "mongoose";
-declare const className: import("mongoose").Model<{
+declare const Food: import("mongoose").Model<{
     name?: string;
+    type?: string;
+    des?: string;
     imageUrl?: string;
 }, {}, {}, {}, import("mongoose").Document<unknown, {}, {
     name?: string;
+    type?: string;
+    des?: string;
     imageUrl?: string;
 }> & Omit<{
     name?: string;
+    type?: string;
+    des?: string;
     imageUrl?: string;
 } & {
     _id: import("mongoose").Types.ObjectId;
 }, never>, Schema<any, import("mongoose").Model<any, any, any, any, any, any>, {}, {}, {}, {}, import("mongoose").DefaultSchemaOptions, {
     name?: string;
+    type?: string;
+    des?: string;
     imageUrl?: string;
 }, import("mongoose").Document<unknown, {}, import("mongoose").FlatRecord<{
     name?: string;
+    type?: string;
+    des?: string;
     imageUrl?: string;
 }>> & Omit<import("mongoose").FlatRecord<{
     name?: string;
+    type?: string;
+    des?: string;
     imageUrl?: string;
 }> & {
     _id: import("mongoose").Types.ObjectId;
 }, never>>>;
-export { className };
+export default Food;

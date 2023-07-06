@@ -3,6 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+const food_model_1 = __importDefault(require("../models/schemas/food.model"));
 const app_1 = require("firebase/app");
 const firebase_config_1 = __importDefault(require("../../firebase.config"));
 const storage_1 = require("firebase/storage");
@@ -11,7 +12,8 @@ const storage = (0, storage_1.getStorage)();
 class HomeController {
     static async getHomePage(req, res) {
         try {
-            return res.render("home");
+            const foods = await food_model_1.default.find();
+            return res.render("home", { data: foods });
         }
         catch (err) {
             console.log(err);
@@ -31,7 +33,14 @@ class HomeController {
             const metadata = { contentType: req.file.mimetype };
             const snapshot = await (0, storage_1.uploadBytesResumable)(storageRef, req.file.buffer, metadata);
             const downloadURL = await (0, storage_1.getDownloadURL)(snapshot.ref);
-            console.log(downloadURL);
+            const food = new food_model_1.default({
+                name: req.body.name,
+                type: req.body.type,
+                des: req.body.des,
+                imageUrl: downloadURL,
+            });
+            await food.save();
+            res.redirect("/");
         }
         catch (err) {
             console.log(err.message);

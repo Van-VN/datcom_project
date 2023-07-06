@@ -1,9 +1,11 @@
-import {Schema, model} from "mongoose";
+import { Schema, model } from "mongoose";
 
-const classSchema = new Schema({
-    name: String,
-    imageUrl: String,
-})
+const foodSchema = new Schema({
+  name: String,
+  type: String,
+  des: String,
+  imageUrl: String,
+});
 
-const className = model("class", classSchema);
-export {className}
+const Food = model("class", foodSchema);
+export default Food;

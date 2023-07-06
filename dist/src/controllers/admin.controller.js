@@ -80,6 +80,9 @@ class AdminController {
         const food = await food_model_1.default.findByIdAndDelete({ _id: req.params.id });
         res.redirect("/admin/food");
     }
+    static async updateStatus(req, res) {
+        console.log('123');
+    }
 }
 exports.default = AdminController;
 //# sourceMappingURL=admin.controller.js.map

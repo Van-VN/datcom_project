@@ -15,6 +15,7 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
     <link rel="stylesheet" href="/css/style.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -89,8 +90,14 @@
               </td>
               <td>
                 <label class="switch">
-                  <input type="checkbox" <% if(item.status){%> checked <% } %>
-                  />
+                  <input
+                    type="checkbox"
+                    id="<%= item._id %>"
+                    onchange="getStatus('<%= item._id %>')"
+                    data-id="<%= item._id %>"
+                    <% if(item.status) { %>
+                  checked 
+                  <% } %> />
                   <span class="slider round"></span>
                 </label>
               </td>
@@ -116,4 +123,18 @@
       </div>
     </div>
   </body>
+  <script>
+    function getStatus(id) {
+      const isChecked = $(this).is(":checked");
+      const state = document.getElementById(id).checked;
+      $.ajax({
+        //   url: `/admin/updatestatus/${id}`,
+        //   type: "POST",
+        //   data: { isChecked, documentId },
+        //   success: function(response) {
+        //     console.log(response);
+        //   }
+      });
+    }
+  </script>
 </html>

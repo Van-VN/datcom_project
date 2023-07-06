@@ -1,3 +1,4 @@
+import mongoose from "mongoose";
 export declare class ConnectDB {
-    connect(): Promise<void>;
+    connect(): Promise<typeof mongoose>;
 }

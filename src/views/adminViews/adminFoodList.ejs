@@ -74,7 +74,8 @@
               <th scope="col">Tên Món</th>
               <th scope="col">Loại món</th>
               <th scope="col">Ảnh</th>
-              <th scope="col" colspan="3">Trạng thái</th>
+              <th scope="col">Trạng thái</th>
+              <th scope="col" colspan="2">&nbsp;</th>
             </tr>
           </thead>
           <tbody>
@@ -85,6 +86,13 @@
               <td><%= item.type %></td>
               <td>
                 <img src="<%= item.imageUrl %>" alt="food-name" height="50px" />
+              </td>
+              <td>
+                <label class="switch">
+                  <input type="checkbox" <% if(item.status){%> checked <% } %>
+                  />
+                  <span class="slider round"></span>
+                </label>
               </td>
               <td>
                 <a

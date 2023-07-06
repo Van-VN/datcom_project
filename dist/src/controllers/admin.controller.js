@@ -16,12 +16,22 @@ class AdminController {
     }
     static async showUserList(req, res) {
         const users = await user_model_1.default.find();
-        res.render("adminViews/adminUserList", { data: users });
+        if (users) {
+            res.render("adminViews/adminUserList", { data: users });
+        }
+        else {
+            res.end(404);
+        }
     }
     static async showUserEdit(req, res) {
         const userId = req.params.id;
         const user = await user_model_1.default.findById(userId);
-        res.render("adminViews/adminUserEdit", { data: user });
+        if (user) {
+            res.render("adminViews/adminUserEdit", { data: user });
+        }
+        else {
+            res.end(404);
+        }
     }
     static async updateUser(req, res) {
         try {
@@ -35,6 +45,7 @@ class AdminController {
                 user.password = req.body.password;
                 user.className = req.body.userclass;
                 await user.save();
+                res.redirect("/admin/user");
             }
             else {
                 res.redirect("/");
@@ -43,6 +54,16 @@ class AdminController {
         catch (err) {
             res.redirect("/");
             console.log(err.message);
+        }
+    }
+    static async deleteUser(req, res) {
+        const user = user_model_1.default.findOne({ _id: req.params.id });
+        if (user) {
+            await user_model_1.default.findByIdAndDelete({ _id: req.params.id });
+            res.redirect("/admin/user");
+        }
+        else {
+            res.redirect("/admin/user");
         }
     }
     static async showCreateUser(req, res) {

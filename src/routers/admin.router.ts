@@ -39,5 +39,7 @@ adminRouter.get("/admin/food/delete/:id", AdminController.deleteFood);
 adminRouter.post("/admin/updatestatus/:id", AdminController.updateStatus);
 adminRouter.get("/admin/user", AdminController.showUserList);
 adminRouter.get("/admin/user/edit/:id", AdminController.showUserEdit);
+adminRouter.post("/admin/user/edit/:id", AdminController.updateUser);
+adminRouter.get("/admin/user/delete/:id", AdminController.deleteUser);
 
 export default adminRouter;

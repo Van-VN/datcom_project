@@ -3,6 +3,7 @@ declare class AdminController {
     static showUserList(req: any, res: any): Promise<void>;
     static showUserEdit(req: any, res: any): Promise<void>;
     static updateUser(req: any, res: any): Promise<void>;
+    static deleteUser(req: any, res: any): Promise<void>;
     static showCreateUser(req: any, res: any): Promise<void>;
     static createUser(req: any, res: any): Promise<void>;
     static getCreatePage(req: any, res: any): Promise<void>;

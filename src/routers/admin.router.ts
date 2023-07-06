@@ -21,6 +21,7 @@ import { Admin } from "mongodb";
 
 adminRouter.get("/admin", AdminController.showAdminPage);
 adminRouter.get("/admin/user/create", AdminController.showCreateUser);
+adminRouter.post("/admin/user/create", AdminController.createUser);
 adminRouter.get("/admin/create", AdminController.getCreatePage);
 adminRouter.post(
   "/admin/create",
@@ -34,7 +35,9 @@ adminRouter.post(
   upload.single("picture"),
   AdminController.updateFood
 );
-adminRouter.get('/admin/food/delete/:id', AdminController.deleteFood)
-adminRouter.post('/admin/updatestatus/:id', AdminController.updateStatus)
+adminRouter.get("/admin/food/delete/:id", AdminController.deleteFood);
+adminRouter.post("/admin/updatestatus/:id", AdminController.updateStatus);
+adminRouter.get("/admin/user", AdminController.showUserList);
+adminRouter.get("/admin/user/edit/:id", AdminController.showUserEdit);
 
 export default adminRouter;

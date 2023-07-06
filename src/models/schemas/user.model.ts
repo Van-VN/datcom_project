@@ -1,10 +1,11 @@
-import {Schema, model} from "mongoose";
+import { Schema, model } from "mongoose";
 
 const userSchema = new Schema({
-    name: String,
-    role: String,
-    password: String,
-    className: {type: Schema.Types.ObjectId, ref:'ClassName'}
-})
+  name: String,
+  fullName: String,
+  role: { type: String, default: "User" },
+  password: String,
+  className: String,
+});
 const User = model("user", userSchema);
-export {User}
+export default User;

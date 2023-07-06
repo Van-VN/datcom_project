@@ -1,4 +1,5 @@
 import Food from "../models/schemas/food.model";
+import User from "../models/schemas/user.model";
 import { initializeApp } from "firebase/app";
 import config from "../../firebase.config";
 import {
@@ -13,12 +14,64 @@ const storage = getStorage();
 
 class AdminController {
   static async showAdminPage(req: any, res: any) {
-    // res.render("adminViews/admin");
     res.redirect("/admin/food");
   }
 
+  static async showUserList(req: any, res: any) {
+    const users = await User.find();
+    res.render("adminViews/adminUserList", { data: users });
+  }
+
+  static async showUserEdit(req: any, res: any) {
+    const userId = req.params.id;
+    const user = await User.findById(userId);
+    res.render("adminViews/adminUserEdit", { data: user });
+  }
+
+  static async updateUser(req: any, res: any) {
+    try {
+      const user = await User.findOne({ _id: req.params.id }).catch((err) => {
+        console.log(err);
+        res.redirect("/");
+      });
+      if (user) {
+        user.name = req.body.signinname;
+        user.fullName = req.body.username;
+        user.password = req.body.password;
+        user.className = req.body.userclass;
+        await user.save();
+      } else {
+        res.redirect("/");
+      }
+    } catch (err) {
+      res.redirect("/");
+      console.log(err.message);
+    }
+  }
+
   static async showCreateUser(req: any, res: any) {
-    res.render("adminViews/adminCreateUser");
+    res.render("adminViews/adminCreateUser", { alert: null });
+  }
+
+  static async createUser(req: any, res: any) {
+    try {
+      const user = await User.findOne({ name: req.body.signinname });
+      if (user) {
+        const alert = `Đã tồn tại người dùng với tên ${user.name} vui lòng chọn tên đăng nhập khác!`;
+        res.render("adminViews/adminCreateUser", { alert: alert });
+      } else {
+        const newUser = new User({
+          name: req.body.signinname,
+          fullName: req.body.username,
+          password: req.body.password,
+          className: req.body.userclass,
+        });
+        await newUser.save();
+        res.redirect("/admin");
+      }
+    } catch (err) {
+      console.log(err.message);
+    }
   }
 
   static async getCreatePage(req: any, res: any) {
@@ -61,7 +114,11 @@ class AdminController {
   static async showUpdateFood(req: any, res: any) {
     const foodId = req.params.id;
     const food = await Food.findOne({ _id: foodId });
-    res.render("adminViews/adminFoodUpdate", { data: food });
+    if (food) {
+      res.render("adminViews/adminFoodUpdate", { data: food });
+    } else {
+      res.end(404);
+    }
   }
 
   static async updateFood(req: any, res: any) {
@@ -94,12 +151,16 @@ class AdminController {
 
   static async deleteFood(req: any, res: any) {
     const food = await Food.findByIdAndDelete({ _id: req.params.id });
-    res.redirect("/admin/food");
+    if (food) {
+      res.redirect("/admin/food");
+    } else {
+      res.end(404);
+    }
   }
 
   static async updateStatus(req: any, res: any) {
-      const food = await Food.findOne({ _id: req.body.id });
-      await food.updateOne({$set: {"status": req.body.state}})
+    const food = await Food.findOne({ _id: req.body.id });
+    await food.updateOne({ $set: { status: req.body.state } });
   }
 }
 

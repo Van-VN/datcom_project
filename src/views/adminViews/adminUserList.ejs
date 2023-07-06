@@ -65,71 +65,43 @@
         >
       </div>
       <div class="col-sm-10 admin-right">
-        <!-- <div>
-            <img
-              src="https://firebasestorage.googleapis.com/v0/b/dat-com-6b42f.appspot.com/o/files%2Flogo-dat-com.png?alt=media&token=b175307c-f390-46e8-9ef8-69f36a1d9949"
-              width="300px"
-              alt="Logo dat com"
-              style="display: block; margin: 0 auto"
-            />
-          </div> -->
-        <h2>Tạo tài khoản user mới</h2>
-        <form method="post" action="/admin/user/create">
-          <div class="form-group">
-            <label for="exampleInputEmail1">Tên đăng nhập</label>
-            <input
-              type="text"
-              class="form-control"
-              aria-describedby="emailHelp"
-              placeholder="Nhập tên đăng nhập"
-              name="signinname"
-            />
-          </div>
-          <div class="form-group">
-            <label for="exampleInputEmail1">Họ tên người dùng</label>
-            <input
-              type="text"
-              class="form-control"
-              aria-describedby="emailHelp"
-              placeholder="Nhập họ tên người dùng"
-              name="username"
-            />
-          </div>
-          <div class="form-group">
-            <label for="exampleInputEmail1">Tên lớp</label>
-            <input
-              type="text"
-              class="form-control"
-              aria-describedby="emailHelp"
-              placeholder="Nhập tên lớp, ex: C0223G1"
-              name="userclass"
-            />
-          </div>
-          <div class="form-group">
-            <label for="exampleInputPassword1">Mật khẩu</label>
-            <input
-              type="password"
-              class="form-control"
-              id="exampleInputPassword1"
-              placeholder="Nhập mật khẩu"
-              name="password"
-            />
-          </div>
-          <% if(alert) { %>
-          <p style="color: red"><strong><%= alert %></strong></p>
-          <% } %>
-          <button
-            type="submit"
-            class="btn btn-primary btn-login"
-            style="
-              width: 100%;
-              background-color: #2f2e7d;
-              border: 1px solid #2f2e7d;
-            "
-          >
-            Tạo tài khoản
-          </button>
-        </form>
+        <h2>Quản lý người dùng</h2>
+        <br />
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Tên đăng nhập</th>
+              <th scope="col">Họ tên</th>
+              <th scope="col" colspan="3">Lớp</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% data.forEach((item, index) => { %>
+            <tr>
+              <th scope="row"><%= index +1 %></th>
+              <td><%= item.name %></td>
+              <td><%= item.fullName %></td>
+              <td><%= item.className %></td>
+              <td>
+                <a
+                  href="/admin/user/edit/<%= item._id %>"
+                  class="btn btn-success"
+                  >Sửa</a
+                >
+              </td>
+              <td>
+                <a
+                  href="/admin/user/delete/<%= item._id %>"
+                  class="btn btn-danger"
+                  onclick="return confirm(`Bạn có chắc muốn xóa user <%= item.fullName %>`)"
+                  >Xóa</a
+                >
+              </td>
+            </tr>
+            <% }) %>
+          </tbody>
+        </table>
       </div>
     </div>
   </body>

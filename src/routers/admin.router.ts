@@ -35,5 +35,6 @@ adminRouter.post(
   AdminController.updateFood
 );
 adminRouter.get('/admin/food/delete/:id', AdminController.deleteFood)
+adminRouter.post('/admin/updatestatus', AdminController.updateStatus)
 
 export default adminRouter;

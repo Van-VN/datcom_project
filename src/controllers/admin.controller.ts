@@ -98,7 +98,8 @@ class AdminController {
   }
 
   static async updateStatus(req: any, res: any) {
-    console.log('123');
+      const food = await Food.findOne({ _id: req.body.id });
+      await food.updateOne({$set: {"status": req.body.state}})
   }
 }
 

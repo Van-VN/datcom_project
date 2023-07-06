@@ -81,7 +81,8 @@ class AdminController {
         res.redirect("/admin/food");
     }
     static async updateStatus(req, res) {
-        console.log('123');
+        const food = await food_model_1.default.findOne({ _id: req.body.id });
+        await food.updateOne({ $set: { "status": req.body.state } });
     }
 }
 exports.default = AdminController;

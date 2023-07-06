@@ -12,6 +12,10 @@
   width: 100%;
 }
 
+.btn {
+  width: 100%;
+}
+
 @media only screen and (max-width: 1000px) {
   .card-form {
     grid-template-columns: repeat(4, 1fr);
@@ -32,4 +36,8 @@
   .card {
     margin-bottom: 20px;
   }
+}
+
+h1 {
+  margin: 16px 0;
 }

@@ -47,7 +47,7 @@
         </div>
       </div>
     </nav>
-      <h1>Admin Dashboard</h1>
+      <h1 class="admin-header">Admin Dashboard</h1>
       <div class="row">
         <div class="col-sm-2 admin-left">
           <a href="/admin/food" class="btn btn-primary btn-admin"
@@ -107,6 +107,9 @@
                 name="des"
               ><%= data.des %></textarea>
             </div>
+            <div><img src="<%= data.imageUrl %>" alt="food picture" width="500px"></div>
+            <hr>
+            <p style="color: red"><strong>! Up lại ảnh bên dưới nếu muốn thay ảnh !</strong></p>
             <div class="form-group">
               <label for="exampleFormControlFile1">Chọn ảnh món ăn</label>
               <input
@@ -126,7 +129,7 @@
                 border: 1px solid #2f2e7d;
               "
             >
-              Tạo món
+              Cập nhật món ăn <%= data.name %>
             </button>
           </form>
         </div>

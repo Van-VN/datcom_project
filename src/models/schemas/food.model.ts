@@ -5,6 +5,7 @@ const foodSchema = new Schema({
   type: String,
   des: String,
   imageUrl: String,
+  status: { type: Boolean, default: true },
 });
 
 const Food = model("class", foodSchema);

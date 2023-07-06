@@ -6,6 +6,7 @@ const foodSchema = new mongoose_1.Schema({
     type: String,
     des: String,
     imageUrl: String,
+    status: { type: Boolean, default: true },
 });
 const Food = (0, mongoose_1.model)("class", foodSchema);
 exports.default = Food;

@@ -24,16 +24,19 @@
 /// <reference types="mongoose/types/inferschematype" />
 import { Schema } from "mongoose";
 declare const Food: import("mongoose").Model<{
+    status: boolean;
     name?: string;
     type?: string;
     des?: string;
     imageUrl?: string;
 }, {}, {}, {}, import("mongoose").Document<unknown, {}, {
+    status: boolean;
     name?: string;
     type?: string;
     des?: string;
     imageUrl?: string;
 }> & Omit<{
+    status: boolean;
     name?: string;
     type?: string;
     des?: string;
@@ -41,16 +44,19 @@ declare const Food: import("mongoose").Model<{
 } & {
     _id: import("mongoose").Types.ObjectId;
 }, never>, Schema<any, import("mongoose").Model<any, any, any, any, any, any>, {}, {}, {}, {}, import("mongoose").DefaultSchemaOptions, {
+    status: boolean;
     name?: string;
     type?: string;
     des?: string;
     imageUrl?: string;
 }, import("mongoose").Document<unknown, {}, import("mongoose").FlatRecord<{
+    status: boolean;
     name?: string;
     type?: string;
     des?: string;
     imageUrl?: string;
 }>> & Omit<import("mongoose").FlatRecord<{
+    status: boolean;
     name?: string;
     type?: string;
     des?: string;

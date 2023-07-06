@@ -41,3 +41,56 @@
 h1 {
   margin: 16px 0;
 }
+
+.login-container {
+  padding: 20px;
+  background-color: #2f2e7d;
+  margin-top: 20px;
+  max-width: 600px;
+  border-radius: 10px;
+}
+
+.btn-login {
+  padding: 20px;
+  font-size: 20px;
+  text-transform: uppercase;
+  border-radius: 10px;
+}
+
+.login-container h1,
+.login-container label,
+.login-container p {
+  color: white;
+}
+
+.btn-admin {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 20px;
+  background-color: #2f2e7d;
+  border: 1px solid #2f2e7d;
+}
+
+.btn-admin:hover,
+.btn-admin:active,
+.btn-admin:focus {
+  background-color: white;
+  border: 1px solid #2f2e7d;
+  color: #2f2e7d;
+}
+
+.admin-left {
+  display: block;
+  background-color: rgba(224, 224, 224, 0.178);
+  padding: 20px;
+}
+
+.admin-right {
+  /* background: rgb(2, 0, 36);
+  background: linear-gradient(
+    90deg,
+    rgba(179, 179, 179, 0.185) 0%,
+    rgba(0, 212, 255, 0) 18%
+  ); */
+  padding: 20px;
+}

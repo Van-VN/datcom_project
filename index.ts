@@ -1,6 +1,8 @@
 import express = require("express");
 import bodyParser from "body-parser";
 import router from "./src/routers/router";
+import userRouter from "./src/routers/user.router";
+import adminRouter from "./src/routers/admin.router";
 import { ConnectDB } from "./src/models/ConnectDB";
 import livereload from "connect-livereload";
 import flash from "connect-flash";
@@ -27,6 +29,8 @@ app.set("view engine", "ejs");
 app.set("views", "./src/views");
 
 app.use(router);
+app.use(userRouter);
+app.use(adminRouter);
 
 app.listen(port, () => {
   console.log(`http://localhost:${port}`);

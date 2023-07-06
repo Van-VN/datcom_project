@@ -6,6 +6,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express = require("express");
 const body_parser_1 = __importDefault(require("body-parser"));
 const router_1 = __importDefault(require("./src/routers/router"));
+const user_router_1 = __importDefault(require("./src/routers/user.router"));
+const admin_router_1 = __importDefault(require("./src/routers/admin.router"));
 const ConnectDB_1 = require("./src/models/ConnectDB");
 const connect_livereload_1 = __importDefault(require("connect-livereload"));
 const connect_flash_1 = __importDefault(require("connect-flash"));
@@ -27,6 +29,8 @@ app.use((0, connect_flash_1.default)());
 app.set("view engine", "ejs");
 app.set("views", "./src/views");
 app.use(router_1.default);
+app.use(user_router_1.default);
+app.use(admin_router_1.default);
 app.listen(port, () => {
     console.log(`http://localhost:${port}`);
 });

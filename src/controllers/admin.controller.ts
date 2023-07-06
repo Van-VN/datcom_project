@@ -91,6 +91,11 @@ class AdminController {
     }
     res.redirect("/admin/food");
   }
+
+  static async deleteFood(req: any, res: any) {
+    const food = await Food.findByIdAndDelete({ _id: req.params.id });
+    res.redirect("/admin/food");
+  }
 }
 
 export default AdminController;

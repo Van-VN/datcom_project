@@ -47,69 +47,64 @@
         </div>
       </div>
     </nav>
-      <h1>Admin Dashboard</h1>
-      <div class="row">
-        <div class="col-sm-2 admin-left">
-          <a href="/admin/food" class="btn btn-primary btn-admin"
-            >Quản lý đồ ăn</a
-          >
-          <a href="/admin/create" class="btn btn-primary btn-admin"
-            >Tạo món ăn mới</a
-          >
-          <a href="/admin/user/create" class="btn btn-primary btn-admin"
-            >Tạo user mới</a
-          >
-          <a href="/admin/user" class="btn btn-primary btn-admin"
-            >Quản lý User</a
-          >
-          <a href="/admin/list" class="btn btn-primary btn-admin"
-            >Danh sách đồ đặt</a
-          >
-        </div>
-        <div class="col-sm-10 admin-right">
-          <h2>Quản lý đồ ăn</h2>
-          <br />
-          <table class="table table-striped">
-            <thead>
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col">Tên Món</th>
-                <th scope="col">Loại món</th>
-                <th scope="col" colspan="3">Ảnh</th>
-              </tr>
-            </thead>
-            <tbody>
-              <% data.forEach((item, index) => { %>
-              <tr>
-                <th scope="row"><%= index +1 %></th>
-                <td><%= item.name %></td>
-                <td><%= item.type %></td>
-                <td>
-                  <img
-                    src="<%= item.imageUrl %>"
-                    alt="food-name"
-                    height="50px"
-                  />
-                </td>
-                <td>
-                  <a
-                    href="/admin/food/edit/<%= item._id %>"
-                    class="btn btn-success"
-                    >Edit</a
-                  >
-                </td>
-                <td>
-                  <a
-                    href="/admin/food/delete/<%= item._id %>"
-                    class="btn btn-danger"
-                    >Delete</a
-                  >
-                </td>
-              </tr>
-              <% }) %>
-            </tbody>
-          </table>
-        </div>
+    <h1>Admin Dashboard</h1>
+    <div class="row">
+      <div class="col-sm-2 admin-left">
+        <a href="/admin/food" class="btn btn-primary btn-admin"
+          >Quản lý đồ ăn</a
+        >
+        <a href="/admin/create" class="btn btn-primary btn-admin"
+          >Tạo món ăn mới</a
+        >
+        <a href="/admin/user/create" class="btn btn-primary btn-admin"
+          >Tạo user mới</a
+        >
+        <a href="/admin/user" class="btn btn-primary btn-admin">Quản lý User</a>
+        <a href="/admin/list" class="btn btn-primary btn-admin"
+          >Danh sách đồ đặt</a
+        >
       </div>
+      <div class="col-sm-10 admin-right">
+        <h2>Quản lý đồ ăn</h2>
+        <br />
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Tên Món</th>
+              <th scope="col">Loại món</th>
+              <th scope="col" colspan="3">Ảnh</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% data.forEach((item, index) => { %>
+            <tr>
+              <th scope="row"><%= index +1 %></th>
+              <td><%= item.name %></td>
+              <td><%= item.type %></td>
+              <td>
+                <img src="<%= item.imageUrl %>" alt="food-name" height="50px" />
+              </td>
+              <td>
+                <a
+                  href="/admin/food/edit/<%= item._id %>"
+                  class="btn btn-success"
+                  >Edit</a
+                >
+              </td>
+              <td>
+                <a
+                  href="/admin/food/delete/<%= item._id %>"
+                  class="btn btn-danger"
+                  onclick="return confirm('Bạn có chắc muốn xóa món ăn này?')"
+                  >Delete</a
+                >
+              </td>
+            </tr>
+            <% }) %>
+          </tbody>
+        </table>
+      </div>
+    </div>
   </body>
 </html>

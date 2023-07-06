@@ -4,6 +4,7 @@ const userSchema = new Schema({
     name: String,
     role: String,
     password: String,
+    className: {type: Schema.Types.ObjectId, ref:'ClassName'}
 })
-const user = model("user", userSchema);
-export {user}
+const User = model("user", userSchema);
+export {User}

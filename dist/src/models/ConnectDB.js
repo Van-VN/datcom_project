@@ -7,7 +7,7 @@ exports.ConnectDB = void 0;
 const mongoose_1 = __importDefault(require("mongoose"));
 class ConnectDB {
     async connect() {
-        await mongoose_1.default.connect('mongodb+srv://trankhiem99999:bncvznczvzz1411@cluster0.7tvwpiv.mongodb.net/?retryWrites=true&w=majority/test');
+        return await mongoose_1.default.connect('mongodb+srv://hyboy95:XGVy2H6KGOSYAm7W@orderfood.qmvvr29.mongodb.net/test');
     }
 }
 exports.ConnectDB = ConnectDB;

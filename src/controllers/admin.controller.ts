@@ -65,23 +65,30 @@ class AdminController {
   }
 
   static async updateFood(req: any, res: any) {
-    // const storageRef = ref(storage, `files/${req.file.originalname}`);
-    // const metadata = { contentType: req.file.mimetype };
-    // const snapshot = await uploadBytesResumable(
-    //   storageRef,
-    //   req.file.buffer,
-    //   metadata
-    // );
-    // const downloadURL = await getDownloadURL(snapshot.ref);
-    const foodId = req.params.id;
-    console.log(req.body);
-    const food = await Food.findOne({ _id: foodId });
-
-    food.name = req.body.name;
-    food.type = req.body.type;
-    food.des = req.body.des;
-    // food.imageUrl = downloadURL;
-    await food.save();
+    if (req.file) {
+      const storageRef = ref(storage, `files/${req.file.originalname}`);
+      const metadata = { contentType: req.file.mimetype };
+      const snapshot = await uploadBytesResumable(
+        storageRef,
+        req.file.buffer,
+        metadata
+      );
+      const downloadURL = await getDownloadURL(snapshot.ref);
+      const foodId = req.params.id;
+      const food = await Food.findOne({ _id: foodId });
+      food.imageUrl = downloadURL;
+      food.name = req.body.name;
+      food.type = req.body.type;
+      food.des = req.body.des;
+      await food.save();
+    } else {
+      const foodId = req.params.id;
+      const food = await Food.findOne({ _id: foodId });
+      food.name = req.body.name;
+      food.type = req.body.type;
+      food.des = req.body.des;
+      await food.save();
+    }
     res.redirect("/admin/food");
   }
 }

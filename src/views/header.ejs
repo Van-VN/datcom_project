@@ -28,7 +28,13 @@
             style="font-size: 24px; color: #2f2e7d"
           ></i>
         </a>
+        <% if(!locals.userLogin) { %>
         <a href="/login" class="btn btn-add">Login</a>
+        <% } else if (locals.userLogin.role === "Admin") { %>
+        <a href="/admin" class="btn btn-add">Admin Dashboard</a>
+        <% } else if (locals.userLogin.role === 'User') { %>
+        <a href="/user" class="btn btn-add">User Dashboard</a>
+        <% } %>
       </div>
     </div>
   </div>

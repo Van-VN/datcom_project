@@ -143,7 +143,7 @@ class AdminController {
     if (food) {
       res.render("adminViews/adminFoodUpdate", { data: food });
     } else {
-      res.redirect("/404");
+      res.render("404");
     }
   }
 
@@ -180,7 +180,7 @@ class AdminController {
     if (food) {
       res.redirect("/admin/food");
     } else {
-      res.redirect("/404");
+      res.render("404");
     }
   }
 
@@ -195,7 +195,7 @@ class AdminController {
       await Food.updateMany({}, { $set: { status: req.body.state } });
       res.redirect("/admin/food");
     } else {
-      res.redirect("/404");
+      res.render("404");
     }
   }
 }

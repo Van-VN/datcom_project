@@ -137,7 +137,7 @@ class AdminController {
             res.render("adminViews/adminFoodUpdate", { data: food });
         }
         else {
-            res.redirect("/404");
+            res.render("404");
         }
     }
     static async updateFood(req, res) {
@@ -170,7 +170,7 @@ class AdminController {
             res.redirect("/admin/food");
         }
         else {
-            res.redirect("/404");
+            res.render("404");
         }
     }
     static async updateStatus(req, res) {
@@ -184,7 +184,7 @@ class AdminController {
             res.redirect("/admin/food");
         }
         else {
-            res.redirect("/404");
+            res.render("404");
         }
     }
 }

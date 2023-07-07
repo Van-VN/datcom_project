@@ -17,37 +17,7 @@
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="/">Đặt Cơm CG</a>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="/"
-              >Home <span class="sr-only">(current)</span></a
-            >
-          </li>
-        </ul>
-        <div class="login-group">
-          <i
-            class="fa fa-shopping-cart"
-            style="font-size: 24px; color: green"
-          ></i>
-          <a href="/login" class="btn btn-add" style="width: 100px">Login</a>
-        </div>
-      </div>
-    </nav>
+    <%- include('header') -%>
     <div class="order-container">
       <h1>Thông tin đơn hàng</h1>
       <hr />

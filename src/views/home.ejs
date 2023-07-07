@@ -37,7 +37,13 @@
             </h5>
             <h6 class="card-title"><%= item.type %></h6>
             <p class="card-text"><%= item.des %></p>
+<<<<<<< HEAD
             <a href="#" class="btn btn-primary btn-add">Đặt món</a>
+=======
+            <button class="btn btn-primary add-cart" data-id="<%=item.id%>">
+              Đặt món
+            </button>
+>>>>>>> 4407ae8a (okk)
           </div>
         </div>
         <% }) %>
@@ -49,4 +55,23 @@
     integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
     crossorigin="anonymous"
   ></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- Import jQuery từ CDN -->
+  <script>
+    $('.add-cart').click(function() {
+      let id = $(this).attr('data-id');
+      $.ajax({
+        url: '/order',
+        method: 'POST',
+        data: {id: id},
+        success: function (response) {
+          console.log(response);
+        },
+        error: function (xhr, status, error) {
+          console.error(error);
+        }
+      });
+    })
+  </script>
+
+
 </html>

@@ -7,6 +7,7 @@ import { ConnectDB } from "./src/models/ConnectDB";
 import livereload from "connect-livereload";
 import flash from "connect-flash";
 import HomeController from "./src/controllers/home.controller";
+import orderRouter from "./src/routers/order.router";
 const app = express();
 const port = 3000;
 
@@ -31,6 +32,8 @@ app.set("views", "./src/views");
 app.use(router);
 app.use(userRouter);
 app.use(adminRouter);
+app.use(orderRouter);
+
 app.get("*", HomeController.showErrorPage);
 
 app.listen(port, () => {

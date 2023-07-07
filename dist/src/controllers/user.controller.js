@@ -5,8 +5,23 @@ class UserController {
         res.render("login");
     }
     static getUserInfo(req, res) {
-        console.log(req.body);
         res.redirect("/");
+    }
+    static showUserPage(req, res) {
+        try {
+            res.render("user");
+        }
+        catch (err) {
+            console.log(err.message);
+        }
+    }
+    static showCart(req, res) {
+        try {
+            res.render("cart");
+        }
+        catch (err) {
+            console.log(err.message);
+        }
     }
 }
 exports.default = UserController;

@@ -22,7 +22,7 @@ class AdminController {
     if (users) {
       res.render("adminViews/adminUserList", { data: users });
     } else {
-      res.end(404);
+      res.redirect("/404");
     }
   }
 
@@ -35,7 +35,7 @@ class AdminController {
     if (user) {
       res.render("adminViews/adminUserEdit", { data: user });
     } else {
-      res.end(404);
+      res.redirect("/404");
     }
     // } else {
     //   res.end(404);
@@ -46,7 +46,7 @@ class AdminController {
     try {
       const user = await User.findOne({ _id: req.params.id }).catch((err) => {
         console.log(err);
-        res.redirect("/");
+        res.redirect("/404");
       });
       if (user) {
         user.name = req.body.signinname;
@@ -56,10 +56,10 @@ class AdminController {
         await user.save();
         res.redirect("/admin/user");
       } else {
-        res.redirect("/");
+        res.redirect("/404");
       }
     } catch (err) {
-      res.redirect("/");
+      res.redirect("/404");
       console.log(err.message);
     }
   }
@@ -142,7 +142,7 @@ class AdminController {
     if (food) {
       res.render("adminViews/adminFoodUpdate", { data: food });
     } else {
-      res.end(404);
+      res.redirect("/404");
     }
   }
 
@@ -179,7 +179,7 @@ class AdminController {
     if (food) {
       res.redirect("/admin/food");
     } else {
-      res.end(404);
+      res.redirect("/404");
     }
   }
 

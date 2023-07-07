@@ -20,7 +20,7 @@ class AdminController {
             res.render("adminViews/adminUserList", { data: users });
         }
         else {
-            res.end(404);
+            res.redirect("/404");
         }
     }
     static async showUserEdit(req, res) {
@@ -30,14 +30,14 @@ class AdminController {
             res.render("adminViews/adminUserEdit", { data: user });
         }
         else {
-            res.end(404);
+            res.redirect("/404");
         }
     }
     static async updateUser(req, res) {
         try {
             const user = await user_model_1.default.findOne({ _id: req.params.id }).catch((err) => {
                 console.log(err);
-                res.redirect("/");
+                res.redirect("/404");
             });
             if (user) {
                 user.name = req.body.signinname;
@@ -48,11 +48,11 @@ class AdminController {
                 res.redirect("/admin/user");
             }
             else {
-                res.redirect("/");
+                res.redirect("/404");
             }
         }
         catch (err) {
-            res.redirect("/");
+            res.redirect("/404");
             console.log(err.message);
         }
     }
@@ -129,7 +129,7 @@ class AdminController {
             res.render("adminViews/adminFoodUpdate", { data: food });
         }
         else {
-            res.end(404);
+            res.redirect("/404");
         }
     }
     static async updateFood(req, res) {
@@ -162,7 +162,7 @@ class AdminController {
             res.redirect("/admin/food");
         }
         else {
-            res.end(404);
+            res.redirect("/404");
         }
     }
     static async updateStatus(req, res) {

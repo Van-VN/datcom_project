@@ -9,6 +9,14 @@ class HomeController {
       console.log(err);
     }
   }
+
+  static showErrorPage(req: any, res: any) {
+    try {
+      res.render("404");
+    } catch (err) {
+      console.log(err.message);
+    }
+  }
 }
 
 export default HomeController;

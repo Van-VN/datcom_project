@@ -1,5 +1,6 @@
 import { Router } from "express";
 import multer from "multer";
+import checkUrl from "../middlewares/idregex.middleware";
 import { initializeApp } from "firebase/app";
 import config from "../../firebase.config";
 import {
@@ -19,7 +20,7 @@ const adminRouter = Router();
 import AdminController from "../controllers/admin.controller";
 import { Admin } from "mongodb";
 
-adminRouter.get("/admin", AdminController.showAdminPage);
+adminRouter.get("/admin", AdminController.showFoodList);
 adminRouter.get("/admin/user/create", AdminController.showCreateUser);
 adminRouter.post("/admin/user/create", AdminController.createUser);
 adminRouter.get("/admin/create", AdminController.getCreatePage);
@@ -29,17 +30,26 @@ adminRouter.post(
   AdminController.createFood
 );
 adminRouter.get("/admin/food", AdminController.showFoodList);
-adminRouter.get("/admin/food/edit/:id", AdminController.showUpdateFood);
+adminRouter.get(
+  "/admin/food/edit/:id",
+  checkUrl,
+  AdminController.showUpdateFood
+);
 adminRouter.post(
   "/admin/food/edit/:id",
+  checkUrl,
   upload.single("picture"),
   AdminController.updateFood
 );
-adminRouter.get("/admin/food/delete/:id", AdminController.deleteFood);
-adminRouter.post("/admin/updatestatus/:id", AdminController.updateStatus);
+adminRouter.get("/admin/food/delete/:id", checkUrl, AdminController.deleteFood);
+adminRouter.post(
+  "/admin/updatestatus/:id",
+  checkUrl,
+  AdminController.updateStatus
+);
 adminRouter.get("/admin/user", AdminController.showUserList);
-adminRouter.get("/admin/user/edit/:id", AdminController.showUserEdit);
-adminRouter.post("/admin/user/edit/:id", AdminController.updateUser);
-adminRouter.get("/admin/user/delete/:id", AdminController.deleteUser);
+adminRouter.get("/admin/user/edit/:id", checkUrl, AdminController.showUserEdit);
+adminRouter.post("/admin/user/edit/:id", checkUrl, AdminController.updateUser);
+adminRouter.get("/admin/user/delete/:id", checkUrl, AdminController.deleteUser);
 
 export default adminRouter;

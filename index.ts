@@ -39,7 +39,6 @@ app.use(livereload());
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use(userRouter);
 app.use(async (req: any, res: any, next: any) => {
   if (req.isAuthenticated()) {
     try {
@@ -50,7 +49,7 @@ app.use(async (req: any, res: any, next: any) => {
   }
   next();
 });
-
+app.use(userRouter);
 app.use(router);
 app.use(adminRouter);
 app.use(orderRouter);

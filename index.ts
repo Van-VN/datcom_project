@@ -5,12 +5,12 @@ import userRouter from "./src/routers/user.router";
 import adminRouter from "./src/routers/admin.router";
 import { ConnectDB } from "./src/models/ConnectDB";
 import livereload from "connect-livereload";
-import flash from "connect-flash";
 import HomeController from "./src/controllers/home.controller";
 import orderRouter from "./src/routers/order.router";
+import passport from "passport";
 const app = express();
 const port = 3000;
-
+import session from "express-session";
 const db = new ConnectDB();
 db.connect()
   .then((r) => {
@@ -18,22 +18,40 @@ db.connect()
   })
   .catch((err) => {
     console.log(`connect database error`);
-  });
-
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
-app.use(express.static("./public"));
-app.use(livereload());
-app.use(flash());
+});
 
 app.set("view engine", "ejs");
 app.set("views", "./src/views");
+app.use(express.static("./public"));
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
+app.use(session({
+    secret: 'keyboard cat',
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: false }
+}));
+
+app.use(livereload());
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.use(userRouter);
+app.use(async (req: any, res: any, next: any) => {
+    if (req.isAuthenticated()) {
+        try {
+            res.locals.userLogin = req.user;
+        } catch (error) {
+            console.error("Error fetching cart:", error);
+        }
+    }
+    next();
+});
 
 app.use(router);
-app.use(userRouter);
 app.use(adminRouter);
 app.use(orderRouter);
-
 app.get("*", HomeController.showErrorPage);
 
 app.listen(port, () => {

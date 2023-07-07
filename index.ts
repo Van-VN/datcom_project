@@ -18,7 +18,7 @@ db.connect()
   })
   .catch((err) => {
     console.log(`connect database error`);
-});
+  });
 
 app.set("view engine", "ejs");
 app.set("views", "./src/views");
@@ -26,33 +26,36 @@ app.use(express.static("./public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-app.use(session({
-    secret: 'keyboard cat',
+app.use(
+  session({
+    secret: "keyboard cat",
     resave: false,
     saveUninitialized: true,
-    cookie: { secure: false }
-}));
+    cookie: { secure: false },
+  })
+);
 
 app.use(livereload());
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use(userRouter);
 app.use(async (req: any, res: any, next: any) => {
-    if (req.isAuthenticated()) {
-        try {
-            res.locals.userLogin = req.user;
-        } catch (error) {
-            console.error("Error fetching cart:", error);
-        }
+  if (req.isAuthenticated()) {
+    try {
+      res.locals.userLogin = req.user;
+    } catch (error) {
+      console.error("Error fetching cart:", error);
     }
-    next();
+  }
+  next();
 });
-
+app.use(userRouter);
 app.use(router);
 app.use(adminRouter);
 app.use(orderRouter);
-app.get("*", HomeController.showErrorPage);
+app.get("*", (req: any, res: any) => {
+  res.render("404");
+});
 
 app.listen(port, () => {
   console.log(`http://localhost:${port}`);

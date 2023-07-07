@@ -4,9 +4,14 @@ import passport from "../middlewares/user.middleware";
 import UserController from "../controllers/user.controller";
 import HomeController from "../controllers/home.controller";
 import blockUserLogged from "../middlewares/blockUserLogged";
+import blockSwitchFromCusMiddleware from "../middlewares/checkLogin.middleware";
 
-userRouter.get("/user", UserController.showUserPage);
-userRouter.get("/cart", UserController.showCart);
+userRouter.get(
+  "/user",
+  blockSwitchFromCusMiddleware,
+  UserController.showUserPage
+);
+userRouter.get("/cart", blockSwitchFromCusMiddleware, UserController.showCart);
 userRouter.get("/login", blockUserLogged, UserController.showLoginForm);
 userRouter.post(
   "/login",
@@ -21,7 +26,7 @@ userRouter.get("/logout", (req, res, next) => {
     if (err) {
       return next(err);
     }
-    res.redirect("/login");
+    res.redirect("/");
   });
 });
 export default userRouter;

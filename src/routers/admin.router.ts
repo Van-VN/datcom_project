@@ -1,4 +1,5 @@
 import { Router } from "express";
+import checkAdmin from "../middlewares/checkAdmin.middleware";
 import multer from "multer";
 import checkUrl from "../middlewares/idregex.middleware";
 import { initializeApp } from "firebase/app";
@@ -22,6 +23,7 @@ import { Admin } from "mongodb";
 import blockSwitchFromCusMiddleware from "../middlewares/checkLogin.middleware";
 import userRouter from "./user.router";
 adminRouter.use(blockSwitchFromCusMiddleware);
+adminRouter.use(checkAdmin);
 adminRouter.get("/admin", AdminController.showFoodList);
 adminRouter.get("/admin/user/create", AdminController.showCreateUser);
 adminRouter.post("/admin/user/create", AdminController.createUser);
@@ -49,7 +51,7 @@ adminRouter.post(
   checkUrl,
   AdminController.updateStatus
 );
-adminRouter.post('/admin/closeorder', AdminController.closeOrder);
+adminRouter.post("/admin/closeorder", AdminController.closeOrder);
 adminRouter.get("/admin/user", AdminController.showUserList);
 adminRouter.get("/admin/user/edit/:id", checkUrl, AdminController.showUserEdit);
 adminRouter.post("/admin/user/edit/:id", checkUrl, AdminController.updateUser);

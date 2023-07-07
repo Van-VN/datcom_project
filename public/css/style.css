@@ -195,6 +195,23 @@ h1 {
   border: 1px solid #2f2e7d;
 }
 
+.btn-logout {
+  background-color: #2f2e7d;
+  color: white;
+}
+
+.btn-logout:hover,
+.btn-logout:focus,
+.btn-logout:active {
+  border: 1px solid #2f2e7d;
+  background-color: white;
+  color: #2f2e7d;
+}
+
+.navbar-collapse {
+  justify-content: space-between;
+}
+
 .error-page {
   position: relative;
   background-image: url("https://firebasestorage.googleapis.com/v0/b/dat-com-6b42f.appspot.com/o/Main%20Files%2Fdatcom404pc.jpg?alt=media&token=4decf161-d435-4d8e-bd7c-14e17c0f60ac");

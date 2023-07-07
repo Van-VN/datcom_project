@@ -223,3 +223,44 @@ h1 {
   color: white;
 }
 
+.order-container {
+  max-width: 600px;
+  margin: 20px auto;
+  text-align: center;
+  padding: 20px;
+  border: 1px solid #2f2e7d;
+  border-radius: 6px;
+}
+
+.order-container h1 {
+  text-transform: uppercase;
+  color: #2f2e7d;
+}
+
+.order-container button {
+  font-size: 24px;
+  padding: 10px;
+}
+
+.order-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: 0 auto;
+  gap: 40px;
+  justify-content: center;
+  text-align: left;
+  align-items: center;
+}
+
+.order-card img {
+  max-width: 300px;
+}
+
+.order-card h6 {
+  font-style: italic;
+  color: #2f2e7d;
+}
+
+hr {
+  border-top: 1px solid #2f2e7d1f;
+}

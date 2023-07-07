@@ -66,7 +66,22 @@
         >
       </div>
       <div class="col-sm-10 admin-right">
-        <h2>Quản lý đồ ăn</h2>
+        <div
+          style="
+            display: flex;
+            justify-content: space-between;
+            align-content: center;
+          "
+        >
+          <h2>Quản lý đồ ăn</h2>
+          <div style="display: flex; gap: 20px; align-items: center">
+            <h5 style="display: inline-block">Đóng/mở toàn bộ đơn</h5>
+            <label class="switch">
+              <input type="checkbox" id="close-order" <% if(check) { %> checked <% } %> onchange="closeOrder()" />
+              <span class="slider round"></span>
+            </label>
+          </div>
+        </div>
         <br />
         <table class="table table-striped">
           <thead>
@@ -92,12 +107,12 @@
                 <label class="switch">
                   <input
                     type="checkbox"
+                    name="toggle"
                     id="<%= item._id %>"
                     onchange="getStatus('<%= item._id %>')"
                     data-id="<%= item._id %>"
-                    <% if(item.status) { %>
-                  checked 
-                  <% } %> />
+                    <%if(item.status){%>
+                  checked <% } %> />
                   <span class="slider round"></span>
                 </label>
               </td>
@@ -127,9 +142,23 @@
     function getStatus(id) {
       const state = document.getElementById(id).checked;
       $.ajax({
-          url: `/admin/updatestatus/${id}`,
-          type: "POST",
-          data: { state, id },
+        url: `/admin/updatestatus/${id}`,
+        type: "POST",
+        data: { state, id },
+      });
+    }
+
+    function closeOrder() {
+      const state = document.getElementById('close-order').checked;
+      console.log(state);
+      let get = document.getElementsByName('toggle');
+      for(let i = 0; i < get.length; i++) {
+        get[i].checked = state;
+      }
+      $.ajax({
+        url: `/admin/closeorder`,
+        type: "POST",
+        data: { state },
       });
     }
   </script>

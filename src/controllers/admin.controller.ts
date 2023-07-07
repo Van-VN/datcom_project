@@ -27,9 +27,6 @@ class AdminController {
   }
 
   static async showUserEdit(req: any, res: any) {
-    // const regex = /^[a-z0-9]{24}$/;
-    // const check = regex.test(req.params.id);
-    // if (check) {
     const userId = req.params.id;
     const user = await User.findById(userId);
     if (user) {
@@ -37,9 +34,6 @@ class AdminController {
     } else {
       res.redirect("/404");
     }
-    // } else {
-    //   res.end(404);
-    // }
   }
 
   static async updateUser(req: any, res: any) {
@@ -133,7 +127,14 @@ class AdminController {
 
   static async showFoodList(req: any, res: any) {
     const foods = await Food.find();
-    res.render("adminViews/adminFoodList", { data: foods });
+    const foodStatus = await Food.find({ status: true });
+    let check;
+    if (foodStatus.length === 0) {
+      check = false;
+    } else {
+      check = true;
+    }
+    res.render("adminViews/adminFoodList", { data: foods, check: check });
   }
 
   static async showUpdateFood(req: any, res: any) {
@@ -186,6 +187,16 @@ class AdminController {
   static async updateStatus(req: any, res: any) {
     const food = await Food.findOne({ _id: req.body.id });
     await food.updateOne({ $set: { status: req.body.state } });
+  }
+
+  static async closeOrder(req: any, res: any) {
+    const food = await Food.find();
+    if (food) {
+      await Food.updateMany({}, { $set: { status: req.body.state } });
+      res.redirect("/admin/food");
+    } else {
+      res.redirect("/404");
+    }
   }
 }
 

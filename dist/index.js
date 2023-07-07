@@ -11,6 +11,7 @@ const admin_router_1 = __importDefault(require("./src/routers/admin.router"));
 const ConnectDB_1 = require("./src/models/ConnectDB");
 const connect_livereload_1 = __importDefault(require("connect-livereload"));
 const connect_flash_1 = __importDefault(require("connect-flash"));
+const home_controller_1 = __importDefault(require("./src/controllers/home.controller"));
 const app = express();
 const port = 3000;
 const db = new ConnectDB_1.ConnectDB();
@@ -31,6 +32,7 @@ app.set("views", "./src/views");
 app.use(router_1.default);
 app.use(user_router_1.default);
 app.use(admin_router_1.default);
+app.get("*", home_controller_1.default.showErrorPage);
 app.listen(port, () => {
     console.log(`http://localhost:${port}`);
 });

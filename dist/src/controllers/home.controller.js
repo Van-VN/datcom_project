@@ -14,6 +14,14 @@ class HomeController {
             console.log(err);
         }
     }
+    static showErrorPage(req, res) {
+        try {
+            res.render("404");
+        }
+        catch (err) {
+            console.log(err.message);
+        }
+    }
 }
 exports.default = HomeController;
 //# sourceMappingURL=home.controller.js.map

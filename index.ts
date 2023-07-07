@@ -6,7 +6,7 @@ import adminRouter from "./src/routers/admin.router";
 import { ConnectDB } from "./src/models/ConnectDB";
 import livereload from "connect-livereload";
 import flash from "connect-flash";
-
+import HomeController from "./src/controllers/home.controller";
 const app = express();
 const port = 3000;
 
@@ -31,6 +31,7 @@ app.set("views", "./src/views");
 app.use(router);
 app.use(userRouter);
 app.use(adminRouter);
+app.get("*", HomeController.showErrorPage);
 
 app.listen(port, () => {
   console.log(`http://localhost:${port}`);

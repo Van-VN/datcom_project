@@ -172,12 +172,6 @@ h1 {
 }
 
 .admin-right {
-  /* background: rgb(2, 0, 36);
-  background: linear-gradient(
-    90deg,
-    rgba(179, 179, 179, 0.185) 0%,
-    rgba(0, 212, 255, 0) 18%
-  ); */
   padding: 20px;
   padding-right: 40px;
 }
@@ -199,4 +193,32 @@ h1 {
   background-color: #2f2e7d;
   color: white;
   border: 1px solid #2f2e7d;
+}
+
+.error-page {
+  position: relative;
+  background-image: url("https://firebasestorage.googleapis.com/v0/b/dat-com-6b42f.appspot.com/o/Main%20Files%2Fdatcom404pc.jpg?alt=media&token=4decf161-d435-4d8e-bd7c-14e17c0f60ac");
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  margin: 0 20px;
+}
+
+@media only screen and (max-width: 600px) {
+  .error-page {
+    background-image: url("https://firebasestorage.googleapis.com/v0/b/dat-com-6b42f.appspot.com/o/Main%20Files%2Fdatcom404mobile.jpg?alt=media&token=313b1452-71b2-46b5-85fc-2ba10fb385cb");
+  }
+}
+
+.btn-error {
+  display: block;
+  position: absolute;
+  text-align: center;
+  font-size: 24px;
+  align-self: center;
+  width: 100%;
+  top: 91vh;
+  padding: 20px;
+  background-color: #2f2e7d;
+  color: white;
 }

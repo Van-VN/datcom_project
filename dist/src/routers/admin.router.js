@@ -16,6 +16,8 @@ const upload = (0, multer_1.default)({
 });
 const adminRouter = (0, express_1.Router)();
 const admin_controller_1 = __importDefault(require("../controllers/admin.controller"));
+const checkLogin_middleware_1 = __importDefault(require("../middlewares/checkLogin.middleware"));
+adminRouter.use(checkLogin_middleware_1.default);
 adminRouter.get("/admin", admin_controller_1.default.showFoodList);
 adminRouter.get("/admin/user/create", admin_controller_1.default.showCreateUser);
 adminRouter.post("/admin/user/create", admin_controller_1.default.createUser);

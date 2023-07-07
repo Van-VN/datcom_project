@@ -19,7 +19,6 @@ passport.serializeUser(function(user: any, cb) {
 });
 
 passport.deserializeUser(function(user: any, cb): any {
-    console.log(user)
     process.nextTick(function(): any {
         return cb(null, user);
     });

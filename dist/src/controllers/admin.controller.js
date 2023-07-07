@@ -120,7 +120,15 @@ class AdminController {
     }
     static async showFoodList(req, res) {
         const foods = await food_model_1.default.find();
-        res.render("adminViews/adminFoodList", { data: foods });
+        const foodStatus = await food_model_1.default.find({ status: true });
+        let check;
+        if (foodStatus.length === 0) {
+            check = false;
+        }
+        else {
+            check = true;
+        }
+        res.render("adminViews/adminFoodList", { data: foods, check: check });
     }
     static async showUpdateFood(req, res) {
         const foodId = req.params.id;
@@ -168,6 +176,16 @@ class AdminController {
     static async updateStatus(req, res) {
         const food = await food_model_1.default.findOne({ _id: req.body.id });
         await food.updateOne({ $set: { status: req.body.state } });
+    }
+    static async closeOrder(req, res) {
+        const food = await food_model_1.default.find();
+        if (food) {
+            await food_model_1.default.updateMany({}, { $set: { status: req.body.state } });
+            res.redirect("/admin/food");
+        }
+        else {
+            res.redirect("/404");
+        }
     }
 }
 exports.default = AdminController;

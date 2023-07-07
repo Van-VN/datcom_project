@@ -13,5 +13,6 @@ declare class AdminController {
     static updateFood(req: any, res: any): Promise<void>;
     static deleteFood(req: any, res: any): Promise<void>;
     static updateStatus(req: any, res: any): Promise<void>;
+    static closeOrder(req: any, res: any): Promise<void>;
 }
 export default AdminController;

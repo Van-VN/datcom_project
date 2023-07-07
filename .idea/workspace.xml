@@ -4,7 +4,32 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aa2d2fa0-9bcd-466f-b441-762e2adce596" name="Changes" comment="" />
+    <list default="true" id="aa2d2fa0-9bcd-466f-b441-762e2adce596" name="Changes" comment="done product detail">
+<<<<<<< HEAD
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/tsconfig.build.tsbuildinfo" beforeDir="false" afterPath="$PROJECT_DIR$/dist/tsconfig.build.tsbuildinfo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/apple-touch-icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/appstore.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/logo-white.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/logo@2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/playmarket.png" beforeDir="false" />
+=======
+      <change afterPath="$PROJECT_DIR$/src/controllers/order.controller.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/routers/order.router.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/index.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/index.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/src/models/schemas/order.model.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/dist/src/models/schemas/order.model.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/src/models/schemas/order.model.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/src/models/schemas/order.model.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/src/models/schemas/order.model.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/src/models/schemas/order.model.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/tsconfig.build.tsbuildinfo" beforeDir="false" afterPath="$PROJECT_DIR$/dist/tsconfig.build.tsbuildinfo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/schemas/order.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/schemas/order.model.ts" afterDir="false" />
+>>>>>>> 4407ae8a (okk)
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -111,6 +136,7 @@
       <workItem from="1688530555117" duration="535000" />
       <workItem from="1688626625187" duration="566000" />
       <workItem from="1688632614440" duration="458000" />
+      <workItem from="1688699820005" duration="438000" />
     </task>
     <servers />
   </component>

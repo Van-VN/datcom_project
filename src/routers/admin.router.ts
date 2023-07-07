@@ -19,7 +19,9 @@ const upload = multer({
 const adminRouter = Router();
 import AdminController from "../controllers/admin.controller";
 import { Admin } from "mongodb";
-
+import blockSwitchFromCusMiddleware from "../middlewares/checkLogin.middleware";
+import userRouter from "./user.router";
+adminRouter.use(blockSwitchFromCusMiddleware);
 adminRouter.get("/admin", AdminController.showFoodList);
 adminRouter.get("/admin/user/create", AdminController.showCreateUser);
 adminRouter.post("/admin/user/create", AdminController.createUser);

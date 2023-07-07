@@ -4,7 +4,6 @@ class UserController {
   }
 
   static getUserInfo(req: any, res: any) {
-    console.log(req.body);
     res.redirect("/");
   }
 }

@@ -17,37 +17,8 @@
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="/">Đặt Cơm CG</a>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
 
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="/"
-              >Home <span class="sr-only">(current)</span></a
-            >
-          </li>
-        </ul>
-        <div class="login-group">
-          <i
-            class="fa fa-shopping-cart"
-            style="font-size: 24px; color: green"
-          ></i>
-          <a href="/login" class="btn btn-add" style="width: 100px">Login</a>
-        </div>
-      </div>
-    </nav>
+    <%- include('header') -%>
     <div class="container">
       <h1>Đặt cơm online CodeGym</h1>
       <div class="card-form">
@@ -66,7 +37,10 @@
             </h5>
             <h6 class="card-title"><%= item.type %></h6>
             <p class="card-text"><%= item.des %></p>
-            <a href="#" class="btn btn-primary btn-add">Đặt món</a>
+
+            <button class="btn btn-primary add-cart" data-id="<%=item.id%>">
+              Đặt món
+            </button>
           </div>
         </div>
         <% }) %>
@@ -78,4 +52,23 @@
     integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
     crossorigin="anonymous"
   ></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- Import jQuery từ CDN -->
+  <script>
+    $('.add-cart').click(function() {
+      let id = $(this).attr('data-id');
+      $.ajax({
+        url: '/order',
+        method: 'POST',
+        data: {id: id},
+        success: function (response) {
+          console.log(response);
+        },
+        error: function (xhr, status, error) {
+          console.error(error);
+        }
+      });
+    })
+  </script>
+
+
 </html>

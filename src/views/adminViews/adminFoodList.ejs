@@ -107,6 +107,7 @@
                 <label class="switch">
                   <input
                     type="checkbox"
+                    name="toggle"
                     id="<%= item._id %>"
                     onchange="getStatus('<%= item._id %>')"
                     data-id="<%= item._id %>"
@@ -149,6 +150,11 @@
 
     function closeOrder() {
       const state = document.getElementById('close-order').checked;
+      console.log(state);
+      let get = document.getElementsByName('toggle');
+      for(let i = 0; i < get.length; i++) {
+        get[i].checked = state;
+      }
       $.ajax({
         url: `/admin/closeorder`,
         type: "POST",

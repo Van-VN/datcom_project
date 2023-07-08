@@ -33,6 +33,13 @@
   width: 100%;
 }
 
+.btn-sort {
+  padding: 10px 40px;
+  width: auto;
+  display: inline-block;
+  margin-right: 20px;
+}
+
 .switch {
   position: relative;
   display: inline-block;

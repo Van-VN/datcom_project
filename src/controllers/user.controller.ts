@@ -26,7 +26,6 @@ class UserController {
   }
 
   static showEditPassword(req: any, res: any) {
-    console.log(req.user);
     res.render("usereditpassword", { data: null });
   }
 

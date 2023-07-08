@@ -74,6 +74,15 @@ class HomeController {
       console.log(err.message);
     }
   }
+
+  static async searchFood(req: any, res: any) {
+    const query = req.query.q;
+    const results = await Food.find({ name: { $regex: query, $options: "i" } });
+    // res.render("home", { data: results });
+    // console.log(123);
+    // console.log(results);
+    res.json(results);
+  }
 }
 
 export default HomeController;

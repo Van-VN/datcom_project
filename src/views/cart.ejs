@@ -14,62 +14,37 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="/css/style.css" />
   </head>
   <body>
     <%- include('header') -%>
     <div class="container">
       <div class="order-container">
-        <h1>Thông tin đơn hàng</h1>
+        <h1 style="margin-bottom: 10px">Thông tin đơn hàng</h1>
+        <h6 style="text-align: left">
+          Ngày tạo đơn <%= data.dateOrder.toLocaleString() %>
+        </h6>
         <hr />
+        <% if(data.foods.length > 0) { %> <%
+        data.foods.forEach((item) => { %>
+            <% console.log(item) %>
         <div class="order-card">
           <img
-            src="https://firebasestorage.googleapis.com/v0/b/dat-com-6b42f.appspot.com/o/files%2Fe87c601c6e67b039e976.jpg?alt=media&token=ed661063-b2e3-4d8b-a5d8-1bd0bf26e610"
-            alt=""
+            src="<%= item.food.imageUrl %>"
+            alt="<%=item.food.type%> <%= item.food.name %>"
           />
           <div>
-            <h4>Rau muống xào tỏi thêm nhiều rau</h4>
+            <h4><%= item.food.name %></h4>
             <br />
-            <h6>Món thịt</h6>
+            <h6><%= item.food.type %></h6>
           </div>
         </div>
         <hr />
-        <div class="order-card">
-          <img
-            src="https://firebasestorage.googleapis.com/v0/b/dat-com-6b42f.appspot.com/o/files%2Fe87c601c6e67b039e976.jpg?alt=media&token=ed661063-b2e3-4d8b-a5d8-1bd0bf26e610"
-            alt=""
-          />
-          <div>
-            <h4>Rau muống xào tỏi thêm nhiều rau</h4>
-            <br />
-            <h6>Món thịt</h6>
-          </div>
-        </div>
-        <hr />
-        <div class="order-card">
-          <img
-            src="https://firebasestorage.googleapis.com/v0/b/dat-com-6b42f.appspot.com/o/files%2Fe87c601c6e67b039e976.jpg?alt=media&token=ed661063-b2e3-4d8b-a5d8-1bd0bf26e610"
-            alt=""
-          />
-          <div>
-            <h4>Rau muống xào tỏi thêm nhiều rau</h4>
-            <br />
-            <h6>Món thịt</h6>
-          </div>
-        </div>
-        <hr />
-        <div class="order-card">
-          <img
-            src="https://firebasestorage.googleapis.com/v0/b/dat-com-6b42f.appspot.com/o/files%2Fe87c601c6e67b039e976.jpg?alt=media&token=ed661063-b2e3-4d8b-a5d8-1bd0bf26e610"
-            alt=""
-          />
-          <div>
-            <h4>Rau muống xào tỏi thêm nhiều rau</h4>
-            <br />
-            <h6>Món thịt</h6>
-          </div>
-        </div>
-        <hr />
+        <% }) %> <% } else { %>
+        <h6>
+          Rỏ hàng hiện tại đang trống, vào <a href="/">đây</a> để mua hàng ngay!
+        </h6>
+        <% } %>
         <button class="btn btn-primary btn-admin">Thanh toán</button>
       </div>
     </div>

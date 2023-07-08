@@ -38,17 +38,60 @@ class OrderController {
           "foods.food"
         );
         let data = [];
-        let cartData;
         const now = new Date().toDateString();
         foods.forEach((item) => {
           if (item.dateOrder.toDateString() === now) {
             data.push(item);
           }
         });
-        if (data.length > 1) {
-          cartData = data[data.length - 1];
+        res.render("cart", { data: data, alert: null });
+      }
+    } catch (err) {
+      console.log(err.message);
+      res.render("404");
+    }
+  }
+
+  static async deleteOrder(req: any, res: any) {
+    try {
+      const order = await Order.findOne({ _id: req.params.id });
+      if (req.user && order.userID.toString() === req.user.id) {
+        await Order.findByIdAndDelete({ _id: req.params.id });
+        res.redirect("/cart");
+      } else {
+        res.render("404");
+      }
+    } catch (err) {
+      console.log(err.message);
+      res.render("404");
+    }
+  }
+
+  static async checkOut(req: any, res: any) {
+    try {
+      const userId = req.user.id;
+      const foods = await Order.find({ userID: userId }).populate("foods.food");
+      let data = [];
+      const now = new Date().toDateString();
+      foods.forEach((item) => {
+        if (item.dateOrder.toDateString() === now) {
+          data.push(item);
         }
-        res.render("cart", { data: cartData });
+      });
+      let failCheck = 0;
+      let foodArray = req.body.foodType;
+      foodArray.forEach((item) => {
+        if (item === "Món thịt") {
+          failCheck++;
+        }
+      });
+
+      if (failCheck > 3 || foodArray.length > 4) {
+        const alert = "Đặt ít hơn 4 món và tối đa 3 món thịt!";
+        res.render("cart", { data: data, alert: alert });
+      } else {
+        console.log(`Success!`);
+        //   Xử lý logic khi book thành công tại đây!
       }
     } catch (err) {
       console.log(err.message);

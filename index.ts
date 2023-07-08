@@ -49,10 +49,10 @@ app.use(async (req: any, res: any, next: any) => {
   }
   next();
 });
-app.use(userRouter);
 app.use(router);
-app.use(adminRouter);
 app.use(orderRouter);
+app.use(userRouter);
+app.use(adminRouter);
 app.get("*", (req: any, res: any) => {
   res.render("404");
 });

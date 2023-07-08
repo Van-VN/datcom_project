@@ -15,5 +15,5 @@ const foodSchema = new Schema({
   ],
 });
 
-const Food = model("class", foodSchema);
+const Food = model("food", foodSchema);
 export default Food;

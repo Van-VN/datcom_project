@@ -52,6 +52,9 @@
             name="password"
           />
         </div>
+        <% if(data) { %> 
+          <p style="color:red"><%= data %></p>
+          <% } %>
         <button
           type="submit"
           class="btn btn-primary btn-login"

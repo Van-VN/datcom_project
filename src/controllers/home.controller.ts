@@ -80,6 +80,16 @@ class HomeController {
     const results = await Food.find({ name: { $regex: query, $options: "i" } });
     res.json(results);
   }
+
+  static async meatSort(req: any, res: any) {
+    const results = await Food.find({ type: "Món thịt" });
+    return res.json(results);
+  }
+
+  static async vegSort(req: any, res: any) {
+    const results = await Food.find({ type: "Món rau" });
+    return res.json(results);
+  }
 }
 
 export default HomeController;

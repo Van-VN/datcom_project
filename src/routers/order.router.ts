@@ -7,11 +7,12 @@ import checkUrl from "../middlewares/idregex.middleware";
 orderRouter.post(
   "/order", blockSwitchFromCusMiddleware, OrderController.addToCart
 );
-
 orderRouter.get(
   "/cart", blockSwitchFromCusMiddleware, OrderController.showCart
 );
-
 orderRouter.get('/order/delete/:id', checkUrl , blockSwitchFromCusMiddleware, OrderController.deleteOrder)
+orderRouter.post(
+    "/cart", blockSwitchFromCusMiddleware, OrderController.checkOut
+  );
 
 export default orderRouter;

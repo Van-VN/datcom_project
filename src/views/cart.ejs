@@ -20,35 +20,54 @@
     <%- include('header') -%>
     <div class="container">
       <div class="order-container">
-        <h1 style="margin-bottom: 10px">Thông tin đơn hàng</h1>
-        <hr />
-        <% if(data.length > 1) { %> <% data.forEach((item) => { %> <%
-        if(item.foods[0].food.status) { %>
-        <div class="order-card">
-          <img
-            src="<%= item.foods[0].food.imageUrl %>"
-            alt="<%= item.foods[0].food.name %>"
+        <form action="/cart" method="post">
+          <h1 style="margin-bottom: 10px">Thông tin đơn hàng</h1>
+          <hr />
+          <% if(alert) { %>
+          <p style="color: red"><%= alert %></p>
+          <% } %> <% if(data.length > 1) { %> <% data.forEach((item) => { %> <%
+          if(item.foods[0].food.status) { %>
+          <input
+            type="text"
+            name="foodName"
+            style="display: none"
+            value="<%= item.foods[0].food.name %>"
           />
-          <div>
-            <h4><%= item.foods[0].food.name %></h4>
-            <p>Order vào lúc: <%= item.dateOrder.toDateString() %></p>
-            <h6><%= item.foods[0].food.type %></h6>
-            <a
-              href="/order/delete/<%= item.id %>"
-              class="btn btn-danger"
-              style="width: 50%"
-              onclick="return confirm('Bạn có chắc muốn xóa món ăn này khỏi hóa đơn?')"
-              >Xóa món ăn</a
-            >
+          <input
+            type="text"
+            name="foodType"
+            style="display: none"
+            value="<%= item.foods[0].food.type %>"
+          />
+          <div class="order-card">
+            <img
+              src="<%= item.foods[0].food.imageUrl %>"
+              alt="<%= item.foods[0].food.name %>"
+            />
+            <div>
+              <h4><%= item.foods[0].food.name %></h4>
+              <p>Order vào lúc: <%= item.dateOrder.toDateString() %></p>
+              <h6><%= item.foods[0].food.type %></h6>
+              <a
+                href="/order/delete/<%= item.id %>"
+                class="btn btn-danger"
+                style="width: 50%"
+                onclick="return confirm('Bạn có chắc muốn xóa món ăn này khỏi hóa đơn?')"
+                >Xóa món ăn</a
+              >
+            </div>
           </div>
-        </div>
-        <hr />
-        <% } %> <% }) %> <% } else { %>
-        <h6 style="margin-bottom: 10px">
-          Rỏ hàng hiện tại đang trống, vào <a href="/">đây</a> để mua hàng ngay!
-        </h6>
-        <% } %>
-        <button class="btn btn-primary btn-admin">Thanh toán</button>
+          <hr />
+          <% } %> <% }) %> <% } else { %>
+          <h6 style="margin-bottom: 20px">
+            Rỏ hàng hiện tại đang trống, vào <a href="/">đây</a> để mua hàng
+            ngay!
+          </h6>
+          <% } %>
+          <button type="submit" class="btn btn-primary btn-admin">
+            Thanh toán
+          </button>
+        </form>
       </div>
     </div>
   </body>

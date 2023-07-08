@@ -44,7 +44,7 @@ class OrderController {
             data.push(item);
           }
         });
-        res.render("cart", { data: data });
+        res.render("cart", { data: data, alert: null });
       }
     } catch (err) {
       console.log(err.message);
@@ -60,6 +60,38 @@ class OrderController {
         res.redirect("/cart");
       } else {
         res.render("404");
+      }
+    } catch (err) {
+      console.log(err.message);
+      res.render("404");
+    }
+  }
+
+  static async checkOut(req: any, res: any) {
+    try {
+      const userId = req.user.id;
+      const foods = await Order.find({ userID: userId }).populate("foods.food");
+      let data = [];
+      const now = new Date().toDateString();
+      foods.forEach((item) => {
+        if (item.dateOrder.toDateString() === now) {
+          data.push(item);
+        }
+      });
+      let failCheck = 0;
+      let foodArray = req.body.foodType;
+      foodArray.forEach((item) => {
+        if (item === "Món thịt") {
+          failCheck++;
+        }
+      });
+
+      if (failCheck > 3 || foodArray.length > 4) {
+        const alert = "Đặt ít hơn 4 món và tối đa 3 món thịt!";
+        res.render("cart", { data: data, alert: alert });
+      } else {
+        console.log(`Success!`);
+        //   Xử lý logic khi book thành công tại đây!
       }
     } catch (err) {
       console.log(err.message);

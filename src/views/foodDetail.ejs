@@ -32,15 +32,15 @@
         <hr />
         <% data.comment.forEach((item) => { %>
         <div class="comment-group">
-          <% if(locals.userLogin.role === "Admin" ||
-          item.postedBy._id.toString() === locals.userLogin.id) { %>
+          <% if(locals.userLogin) { %> <% if(locals.userLogin.role === "Admin"
+          || item.postedBy._id.toString() === locals.userLogin.id) { %>
           <a
             href="/comment/delete/<%= item._id %>"
             class="btn btn-x"
             onclick="return confirm('Bạn có chắc muốn xóa bình luận này?')"
             >X</a
           >
-          <% } %>
+          <% } %> <% } %>
           <div class="commented-by">
             <h5><%= item.postedBy.name %></h5>
             <h6 style="color: #2f2e7d">Lớp - <%= item.postedBy.className %></h6>

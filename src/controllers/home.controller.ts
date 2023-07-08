@@ -32,7 +32,6 @@ class HomeController {
         let comment = req.body;
         if (comment.text.length > 10) {
           comment.postedBy = user;
-          res.redirect(`/detail/${req.params.id}`);
           await Food.findByIdAndUpdate(
             {
               _id: req.params.id,
@@ -42,6 +41,7 @@ class HomeController {
             },
             { new: true }
           );
+          res.redirect(`/detail/${req.params.id}`);
         } else {
           const data = "Bình luận chưa đủ 10 chữ cái!";
           res.render("foodDetail", { data: food, alert: data });
@@ -78,9 +78,6 @@ class HomeController {
   static async searchFood(req: any, res: any) {
     const query = req.query.q;
     const results = await Food.find({ name: { $regex: query, $options: "i" } });
-    // res.render("home", { data: results });
-    // console.log(123);
-    // console.log(results);
     res.json(results);
   }
 }

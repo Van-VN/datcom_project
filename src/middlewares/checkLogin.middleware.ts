@@ -9,8 +9,7 @@ const blockSwitchFromCusMiddleware = async (req: any, res: any, next: any) => {
       res.redirect("/");
     }
   } else {
-      const data = "Tên đăng nhập hoặc mật khẩu không chính xác!"
-    res.render("login", {data: data});
+    res.redirect("/login");
   }
 };
 

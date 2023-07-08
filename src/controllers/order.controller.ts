@@ -38,17 +38,28 @@ class OrderController {
           "foods.food"
         );
         let data = [];
-        let cartData;
         const now = new Date().toDateString();
         foods.forEach((item) => {
           if (item.dateOrder.toDateString() === now) {
             data.push(item);
           }
         });
-        if (data.length > 1) {
-          cartData = data[data.length - 1];
-        }
-        res.render("cart", { data: cartData });
+        res.render("cart", { data: data });
+      }
+    } catch (err) {
+      console.log(err.message);
+      res.render("404");
+    }
+  }
+
+  static async deleteOrder(req: any, res: any) {
+    try {
+      const order = await Order.findOne({ _id: req.params.id });
+      if (req.user && order.userID.toString() === req.user.id) {
+        await Order.findByIdAndDelete({ _id: req.params.id });
+        res.redirect("/cart");
+      } else {
+        res.render("404");
       }
     } catch (err) {
       console.log(err.message);

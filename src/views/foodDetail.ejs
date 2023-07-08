@@ -27,14 +27,33 @@
         <h5><%= data.type %></h5>
         <h6><%= data.des %></h6>
       </div>
-      <div class="col-sm-8 admin-right">
+      <div class="col-sm-8 comment-right">
         <h2>Bình luận</h2>
         <hr />
-        <% data.comment.forEach((item) => { %> 
-            <% console.log(item) %>
-            <% }) %>
+        <% data.comment.forEach((item) => { %>
+        <div class="comment-group">
+          <% if(locals.userLogin.role === "Admin" ||
+          item.postedBy._id.toString() === locals.userLogin.id) { %>
+          <a
+            href="/comment/delete/<%= item._id %>"
+            class="btn btn-x"
+            onclick="return confirm('Bạn có chắc muốn xóa bình luận này?')"
+            >X</a
+          >
+          <% } %>
+          <div class="commented-by">
+            <h5><%= item.postedBy.name %></h5>
+            <h6 style="color: #2f2e7d">Lớp - <%= item.postedBy.className %></h6>
+          </div>
+          <div class="comment-content">
+            <p>Đăng vào: <%= item.created.toLocaleString() %></p>
+            <p><%= item.text %></p>
+          </div>
+        </div>
+        <hr />
+        <% }) %>
         <form method="post" action="/detail/<%= data._id %>">
-          <p style="color:#2f2e7d">
+          <p style="color: #2f2e7d">
             Bình luận tối thiểu 10 chữ cái, vui lòng không nói bậy trong không
             gian chung!
           </p>
@@ -46,9 +65,9 @@
               name="text"
             ></textarea>
           </div>
-          <% if(alert) { %> 
-            <p style="color: red"><%= alert %></p>
-            <% } %>
+          <% if(alert) { %>
+          <p style="color: red"><%= alert %></p>
+          <% } %>
           <button
             type="submit"
             class="btn btn-success"

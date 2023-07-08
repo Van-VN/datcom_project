@@ -55,6 +55,18 @@ class HomeController {
     }
   }
 
+  static async deleteComment(req: any, res: any) {
+    try {
+      const commentId = req.params.id;
+      const comment = await Food.findOne({ "comment._id": commentId });
+      await comment.updateOne({ $pull: { comment: { _id: commentId } } });
+      res.redirect(req.headers.referrer);
+    } catch (err) {
+      console.log(err.message);
+      res.render("404");
+    }
+  }
+
   static showErrorPage(req: any, res: any) {
     try {
       res.render("404");

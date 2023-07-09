@@ -12,6 +12,7 @@ const checkLogin_middleware_1 = __importDefault(require("../middlewares/checkLog
 userRouter.get('/user/editpassword', checkLogin_middleware_1.default, user_controller_1.default.showEditPassword);
 userRouter.post('/user/editpassword', checkLogin_middleware_1.default, user_controller_1.default.updateUserPassword);
 userRouter.get("/user", checkLogin_middleware_1.default, user_controller_1.default.showUserPage);
+userRouter.get('/checklogin', user_controller_1.default.checkLogged);
 userRouter.get("/cart", checkLogin_middleware_1.default, user_controller_1.default.showCart);
 userRouter.get("/login", blockUserLogged_1.default, user_controller_1.default.showLoginForm);
 userRouter.post('/login', blockUserLogged_1.default, (req, res, next) => {

@@ -1,3 +1,4 @@
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="/">
     <img
@@ -36,12 +37,15 @@
           oninput="searchFunc()"
         />
       </form>
-      <a href="/cart">
-        <i
-          class="fa fa-shopping-cart"
-          style="font-size: 24px; color: #2f2e7d"
-        ></i>
-      </a>
+      <div style="position: relative">
+        <p class="btn btn-x" id="cart-counter"></p>
+        <a href="/cart">
+          <i
+            class="fa fa-shopping-cart"
+            style="font-size: 24px; color: #2f2e7d"
+          ></i>
+        </a>
+      </div>
       <% if(!locals.userLogin) { %>
       <a href="/login" class="btn btn-add">Login</a>
       <% } else if (locals.userLogin.role === "Admin") { %>
@@ -55,6 +59,29 @@
   </div>
 </nav>
 <script>
+  $(document).ready(function () {
+    updateCartCount();
+    setInterval(updateCartCount, 500);
+  });
+
+  function checkLogin(callback) {
+    $.get("/checklogin", function (results) {
+      callback(results);
+    });
+  }
+
+  function updateCartCount() {
+    checkLogin(function (loggedIn) {
+      if (loggedIn) {
+        $.get("/cartcount", function (results) {
+          $("#cart-counter").html(results);
+        });
+      } else {
+        $("#cart-counter").html(0);
+      }
+    });
+  }
+
   function searchFunc() {
     const value = document.getElementById("searchFood").value;
     $("#searchFood").on("input", function () {
@@ -101,7 +128,6 @@
   integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
   crossorigin="anonymous"
 ></script>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script
   src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
   integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"

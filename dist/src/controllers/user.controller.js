@@ -27,6 +27,20 @@ class UserController {
             console.log(err.message);
         }
     }
+    static checkLogged(req, res) {
+        try {
+            if (req.user) {
+                res.json(true);
+            }
+            else {
+                res.json(false);
+            }
+        }
+        catch (err) {
+            console.log(err.message);
+            res.render("404");
+        }
+    }
     static showEditPassword(req, res) {
         res.render("usereditpassword", { data: null });
     }

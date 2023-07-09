@@ -13,6 +13,7 @@ userRouter.get(
   blockSwitchFromCusMiddleware,
   UserController.showUserPage
 );
+userRouter.get('/checklogin', UserController.checkLogged)
 userRouter.get("/cart", blockSwitchFromCusMiddleware, UserController.showCart);
 userRouter.get("/login", blockUserLogged, UserController.showLoginForm);
 userRouter.post('/login', blockUserLogged, (req, res, next) => {

@@ -25,7 +25,7 @@
           <hr />
           <% if(alert) { %>
           <p style="color: red"><%= alert %></p>
-          <% } %> <% if(data.length > 1) { %> <% data.forEach((item) => { %> <%
+          <% } %> <% if(data.length > 0) { %> <% data.forEach((item) => { %> <%
           if(item.foods[0].food.status) { %>
           <input
             type="text"

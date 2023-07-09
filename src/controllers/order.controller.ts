@@ -30,6 +30,31 @@ class OrderController {
     }
   }
 
+  static async getCartCount(req: any, res: any) {
+    try {
+      if (req.user) {
+        const userId = req.user.id;
+        const foods = await Order.find({ userID: userId }).populate(
+          "foods.food"
+        );
+        let data = [];
+        const now = new Date().toDateString();
+        foods.forEach((item) => {
+          if (item.dateOrder.toDateString() === now) {
+            data.push(item);
+          }
+        });
+        const count = data.length;
+        res.json(count);
+      } else {
+        return;
+      }
+    } catch (err) {
+      console.log(err.message);
+      res.render("404");
+    }
+  }
+
   static async showCart(req: any, res: any) {
     try {
       if (req.user) {
@@ -86,8 +111,11 @@ class OrderController {
         }
       });
 
-      if (failCheck > 3 || foodArray.length > 4) {
-        const alert = "Đặt ít hơn 4 món và tối đa 3 món thịt!";
+      if (foodArray.length > 4) {
+        const alert = "Đặt tối đa 4 món!";
+        res.render("cart", { data: data, alert: alert });
+      } else if (failCheck > 3) {
+        const alert = "Đặt tối đa 3 món thịt!";
         res.render("cart", { data: data, alert: alert });
       } else {
         console.log(`Success!`);

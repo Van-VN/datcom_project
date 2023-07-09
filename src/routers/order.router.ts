@@ -10,6 +10,7 @@ orderRouter.post(
 orderRouter.get(
   "/cart", blockSwitchFromCusMiddleware, OrderController.showCart
 );
+orderRouter.get('/cartcount', blockSwitchFromCusMiddleware, OrderController.getCartCount);
 orderRouter.get('/order/delete/:id', checkUrl , blockSwitchFromCusMiddleware, OrderController.deleteOrder)
 orderRouter.post(
     "/cart", blockSwitchFromCusMiddleware, OrderController.checkOut

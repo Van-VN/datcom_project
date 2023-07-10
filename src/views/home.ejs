@@ -45,11 +45,13 @@
             <h6 class="card-title"><%= item.type %></h6>
             <p class="card-text"><%= item.des %></p>
 
-            <button
+            <button type="button"
               class="btn btn-primary btn-add add-cart"
               data-id="<%=item.id%>"
-              <% if(locals.userLogin) { %> user-id='<%= locals.userLogin.id %>' <% } %>
-              onclick="addToCart()">
+              <% if(locals.userLogin) { %> 
+                user-id='<%= locals.userLogin.id %>'
+              <% } %> >
+           
               Đặt món
             </button>
           </div>
@@ -59,17 +61,43 @@
     </div>
   </body>
   <script>
-    async function addToCart(callback) {
-      await $('.add-cart').click(function() {
+    //  function addToCart() {
+    //    $('.add-cart').click(function(callback) {
+      // const id = $(this).attr('data-id');
+      // const userId = $(this).attr('user-id');
+      // if(!userId) {
+      //   top.location.href="login";
+      // } else {
+    //   callback($.post('/order', {id:id, userId: userId}));
+    //   console.log('Pushed data!')
+    // }
+    // })
+    // }
+
+    $('.add-cart').click(function() {
       const id = $(this).attr('data-id');
+      console.log(id);
       const userId = $(this).attr('user-id');
       if(!userId) {
         top.location.href="login";
-      } else {
-        callback($.post('/order', {id:id, userId: userId}))
-    }
+        return;
+      } 
+      const origin = location.origin;
+      $.ajax({
+        url: `${origin}/order`,
+        data: {
+          id: id,
+          userId: userId
+        },
+        method: "POST",
+        success: (response) => {
+          
+          $.get("/cartcount", function (results) {
+          $("#cart-counter").html(results);
+        });
+        }
+      })
     })
-    }
 
     function meatsort() {
       $.get("/meatsort", function (results) {

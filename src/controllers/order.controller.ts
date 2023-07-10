@@ -5,9 +5,9 @@ import { Order } from "../models/schemas/order.model";
 class OrderController {
   static async addToCart(req: any, res: any) {
     try {
-      let foodId = req.body.id;
-      let food = await Food.findOne({ _id: foodId });
-      let user = await User.findOne({ _id: req.body.userId });
+      let { id, userId } = req.body;
+      let food = await Food.findOne({ _id: id });
+      let user = await User.findOne({ _id: userId });
       if (food && food.status) {
         let order = new Order();
         order.foods.push({
@@ -17,11 +17,8 @@ class OrderController {
         });
         order.createAt = new Date();
         order.userID = user._id;
-        if (await order.save()) {
-          res.send("ok");
-        } else {
-          res.send("not ok");
-        }
+        await order.save();
+        return res.json("ok");
       } else {
         res.send("not ok");
       }

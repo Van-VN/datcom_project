@@ -59,10 +59,10 @@
   </div>
 </nav>
 <script>
-  $(document).ready(function () {
-    updateCartCount();
-    setInterval(updateCartCount, 500);
-  });
+//   $(document).ready(function () {
+//     updateCartCount();
+//     setInterval(updateCartCount, 500);
+//   });
 
   function checkLogin(callback) {
     $.get("/checklogin", function (results) {
@@ -71,6 +71,7 @@
   }
 
   function updateCartCount() {
+
     checkLogin(function (loggedIn) {
       if (loggedIn) {
         $.get("/cartcount", function (results) {
@@ -81,6 +82,8 @@
       }
     });
   }
+
+  updateCartCount();
 
   function searchFunc() {
     const value = document.getElementById("searchFood").value;

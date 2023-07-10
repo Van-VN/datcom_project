@@ -31,7 +31,7 @@
           class="form-control mr-sm-2 search-bar"
           type="search"
           id="searchFood"
-          placeholder="Tìm theo tên món ăn"
+          placeholder="Tìm theo tên món ăn, bấm Enter để tìm kiếm"
           aria-label="Search"
           name="search"
           onchange="searchFunc()"
@@ -59,10 +59,6 @@
   </div>
 </nav>
 <script>
-  //   $(document).ready(function () {
-  //     updateCartCount();
-  //     setInterval(updateCartCount, 500);
-  //   });
 
   function checkLogin(callback) {
     $.get("/checklogin", function (results) {

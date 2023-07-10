@@ -59,14 +59,14 @@
     </div>
   </body>
   <script>
-    function addToCart() {
-      $('.add-cart').click(function() {
+    async function addToCart(callback) {
+      await $('.add-cart').click(function() {
       const id = $(this).attr('data-id');
       const userId = $(this).attr('user-id');
       if(!userId) {
         top.location.href="login";
       } else {
-      $.post('/order', {id:id, userId: userId});
+        callback($.post('/order', {id:id, userId: userId}))
     }
     })
     }

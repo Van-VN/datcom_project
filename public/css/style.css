@@ -303,7 +303,7 @@ hr {
 }
 
 .card-body {
-  max-height: 190px;
+  max-height: 180px;
 }
 
 .btn-x {
@@ -328,6 +328,35 @@ hr {
 
 .comment-content {
   padding-left: 20px;
+}
+
+.footer-main {
+  background-color: #302f7e;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+.footer-contain {
+  display: flex;
+  flex-grow: 1;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.footer-contain img {
+  flex-grow: 0;
+  max-height: 150px;
+}
+
+.footer-contain p,
+.footer-contain h3 {
+  color: white;
+}
+
+.footer-mid {
+  padding: 20px 60px 20px 20px;
+  border-right: 1px solid rgba(255, 255, 255, 0.253);
 }
 
 #cart-counter {
@@ -369,6 +398,10 @@ hr {
     max-width: 100%;
   }
 
+  .card-body {
+    max-height: fit-content;
+  }
+
   .commented-by {
     border-right: none;
     display: inline-block;
@@ -384,6 +417,33 @@ hr {
 
   .btn-x {
     left: 94%;
+  }
+
+  .search-bar {
+    min-width: auto;
+  }
+
+  .footer-contain {
+    display: inline-block;
+  }
+
+  .footer-mid {
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.253);
+  }
+
+  .footer-right {
+    padding: 20px;
+  }
+
+  .footer-contain img {
+    display: block;
+    margin: 0 auto;
+  }
+
+  .btn-add {
+    padding: 10px 20px;
+    margin-right: 10px;
   }
 
   #searchFood,

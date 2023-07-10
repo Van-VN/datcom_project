@@ -35,7 +35,7 @@
           <% if(locals.userLogin) { %> <% if(locals.userLogin.role === "Admin"
           || item.postedBy._id.toString() === locals.userLogin.id) { %>
           <a
-            href="/comment/delete/<%= item._id %>"
+            href="/comment/delete/<%= item._id %>?q=<%= data._id %>"
             class="btn btn-x"
             onclick="return confirm('Bạn có chắc muốn xóa bình luận này?')"
             >X</a

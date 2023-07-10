@@ -26,17 +26,17 @@
       >
     </div>
     <div class="login-group">
-      <form class="form-inline">
+      <!-- <form class="form-inline"> -->
         <input
-          class="form-control mr-sm-2"
+          class="form-control mr-sm-2 search-bar"
           type="search"
           id="searchFood"
-          placeholder="Search"
+          placeholder="Tìm theo tên món ăn, bấm Enter để tìm kiếm"
           aria-label="Search"
           name="search"
-          oninput="searchFunc()"
+          onchange="searchFunc()"
         />
-      </form>
+      <!-- </form> -->
       <div style="position: relative">
         <p class="btn btn-x" id="cart-counter"></p>
         <a href="/cart">
@@ -59,10 +59,6 @@
   </div>
 </nav>
 <script>
-//   $(document).ready(function () {
-//     updateCartCount();
-//     setInterval(updateCartCount, 500);
-//   });
 
   function checkLogin(callback) {
     $.get("/checklogin", function (results) {
@@ -71,7 +67,6 @@
   }
 
   function updateCartCount() {
-
     checkLogin(function (loggedIn) {
       if (loggedIn) {
         $.get("/cartcount", function (results) {
@@ -87,11 +82,14 @@
 
   function searchFunc() {
     const value = document.getElementById("searchFood").value;
-    $("#searchFood").on("input", function () {
-      const query = $(this).val();
-      $.get("/search", { q: query }, function (results) {
-        $("#container").html(renderSearchResults(results));
-      });
+    const origin = location.origin;
+    $.ajax({
+      url: `${origin}/search`,
+      data: { q: value },
+      method: "GET",
+      success: (response) => {
+        $("#container").html(renderSearchResults(response));
+      },
     });
   }
 

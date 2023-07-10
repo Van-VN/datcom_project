@@ -10,6 +10,11 @@
 
 .card {
   width: 100%;
+  justify-content: space-between;
+}
+
+.search-bar {
+  min-width: 400px;
 }
 
 /* .card img {
@@ -297,6 +302,10 @@ hr {
   flex-grow: 1;
 }
 
+.card-body {
+  max-height: 190px;
+}
+
 .btn-x {
   width: 30px;
   background-color: #f1592d;
@@ -335,7 +344,7 @@ hr {
   }
 
   .login-group {
-    gap:20px;
+    gap: 20px;
     flex-direction: column;
     flex-grow: 1;
   }

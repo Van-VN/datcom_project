@@ -91,7 +91,6 @@
         },
         method: "POST",
         success: (response) => {
-          
           $.get("/cartcount", function (results) {
           $("#cart-counter").html(results);
         });

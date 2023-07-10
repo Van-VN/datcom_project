@@ -58,9 +58,10 @@ class HomeController {
   static async deleteComment(req: any, res: any) {
     try {
       const commentId = req.params.id;
+      const foodId = req.query.q;
       const comment = await Food.findOne({ "comment._id": commentId });
       await comment.updateOne({ $pull: { comment: { _id: commentId } } });
-      res.redirect(req.headers.referrer);
+      res.redirect(`/detail/${foodId}`);
     } catch (err) {
       console.log(err.message);
       res.render("404");
@@ -78,7 +79,7 @@ class HomeController {
   static async searchFood(req: any, res: any) {
     const query = req.query.q;
     const results = await Food.find({ name: { $regex: query, $options: "i" } });
-    res.json(results);
+    return res.json(results);
   }
 
   static async meatSort(req: any, res: any) {

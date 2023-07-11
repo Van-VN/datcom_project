@@ -39,25 +39,27 @@
             style="display: none"
             value="<%= item.foods[0].food.type %>"
           />
-          <div class="order-card" id="<%=item._id%>">
-            <img
-              src="<%= item.foods[0].food.imageUrl %>"
-              alt="<%= item.foods[0].food.name %>"
-            />
-            <div>
-              <h4><%= item.foods[0].food.name %></h4>
-              <p>Order vào lúc: <%= item.dateOrder.toDateString() %></p>
-              <h6><%= item.foods[0].food.type %></h6>
-              <button class="btn btn-danger delete-cart"
-                      data-id="<%= item.id %>"
-                      user-id="<%= locals.userLogin.id %>"
-                      style="width: 50%"
-                      type="button">
-                Xoá món ăn
-              </button>
+          <div id="<%=item._id%>" >
+            <div class="order-card">
+              <img
+                src="<%= item.foods[0].food.imageUrl %>"
+                alt="<%= item.foods[0].food.name %>"
+              />
+              <div>
+                <h4><%= item.foods[0].food.name %></h4>
+                <p>Order vào lúc: <%= item.dateOrder.toDateString() %></p>
+                <h6><%= item.foods[0].food.type %></h6>
+                <button class="btn btn-danger delete-cart"
+                        data-id="<%= item.id %>"
+                        user-id="<%= locals.userLogin.id %>"
+                        style="width: 50%"
+                        type="button">
+                  Xoá món ăn
+                </button>
+              </div>
             </div>
+            <hr />
           </div>
-          <hr />
           <% } %> <% }) %> <% } else { %>
           <h6 style="margin-bottom: 20px">
             Rỏ hàng hiện tại đang trống, vào <a href="/">đây</a> để mua hàng

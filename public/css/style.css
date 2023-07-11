@@ -367,6 +367,15 @@ hr {
   width: 100%;
 }
 
+@media screen and (max-width: 990px) {
+  .card-body {
+    max-height: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+}
+
 @media only screen and (max-width: 600px) {
   .comment-group {
     display: block;

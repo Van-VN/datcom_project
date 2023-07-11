@@ -79,13 +79,12 @@ class OrderController {
       const order = await Order.findOne({ _id: req.params.id });
       if (req.user && order.userID.toString() === req.user.id) {
         await Order.findByIdAndDelete({ _id: req.params.id });
-        res.redirect("/cart");
+        return res.json(order);
       } else {
-        res.render("404");
+        return res.json('please login');
       }
     } catch (err) {
-      console.log(err.message);
-      res.render("404");
+      return res.json(err.message);
     }
   }
 

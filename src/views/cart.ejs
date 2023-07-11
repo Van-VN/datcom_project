@@ -39,7 +39,7 @@
             style="display: none"
             value="<%= item.foods[0].food.type %>"
           />
-          <div class="order-card">
+          <div class="order-card" id="<%=item._id%>">
             <img
               src="<%= item.foods[0].food.imageUrl %>"
               alt="<%= item.foods[0].food.name %>"
@@ -48,13 +48,13 @@
               <h4><%= item.foods[0].food.name %></h4>
               <p>Order vào lúc: <%= item.dateOrder.toDateString() %></p>
               <h6><%= item.foods[0].food.type %></h6>
-              <a
-                href="/order/delete/<%= item.id %>"
-                class="btn btn-danger"
-                style="width: 50%"
-                onclick="return confirm('Bạn có chắc muốn xóa món ăn này khỏi hóa đơn?')"
-                >Xóa món ăn</a
-              >
+              <button class="btn btn-danger delete-cart"
+                      data-id="<%= item.id %>"
+                      user-id="<%= locals.userLogin.id %>"
+                      style="width: 50%"
+                      type="button">
+                Xoá món ăn
+              </button>
             </div>
           </div>
           <hr />
@@ -71,4 +71,37 @@
       </div>
     </div>
   </body>
+  <script>
+      $('.delete-cart').click(function() {
+        let wantDelete = confirm("Want to delete?");
+        if (wantDelete){
+          const idFood = $(this).attr('data-id');
+          const userId = $(this).attr('user-id');
+          if(!userId) {
+            top.location.href="login";
+            return;
+          }
+          const origin = location.origin;
+          console.log(`${origin}/order/delete/${idFood}`);
+          $.ajax({
+            url: `${origin}/order/delete/${idFood}`,
+            data: {
+              id: idFood,
+              userId: userId
+            },
+            method: "POST",
+            success: (response) => {
+              if (response._id.length > 0) {
+                $(`#${response._id}`).remove();
+              } else {
+                top.location.href="/";
+                return;
+              }
+            }
+          })
+        }
+
+      })
+  </script>
 </html>
+

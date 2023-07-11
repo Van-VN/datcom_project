@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Đặt cơm CG</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="/">Đặt Cơm CG</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="/"
+              >Home <span class="sr-only">(current)</span></a
+            >
+          </li>
+        </ul>
+        <div>
+          <i
+            class="fa fa-shopping-cart"
+            style="font-size: 24px; color: green"
+          ></i>
+        </div>
+      </div>
+    </nav>
+    <h1 class="admin-header">Admin Dashboard</h1>
+    <div class="row">
+      <div class="col-sm-2 admin-left">
+        <a href="/admin/food" class="btn btn-primary btn-admin"
+          >Quản lý đồ ăn</a
+        >
+        <a href="/admin/create" class="btn btn-primary btn-admin"
+          >Tạo món ăn mới</a
+        >
+        <a href="/admin/user/create" class="btn btn-primary btn-admin"
+          >Tạo user mới</a
+        >
+        <a href="/admin/user" class="btn btn-primary btn-admin">Quản lý User</a>
+        <a href="/admin/list" class="btn btn-primary btn-admin"
+          >Danh sách đồ đặt</a
+        >
+      </div>
+      <div class="col-sm-10 admin-right">
+        <h2>Cập nhật tài khoản <%= data.fullName %></h2>
+        <form method="post" action="/admin/user/edit/<%= data._id %>">
+          <div class="form-group">
+            <label for="exampleInputEmail1">Tên đăng nhập</label>
+            <input
+              type="text"
+              class="form-control"
+              aria-describedby="emailHelp"
+              placeholder="<%= data.name %>"
+              value="<%= data.name %>"
+              name="signinname"
+            />
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Họ tên người dùng</label>
+            <input
+              type="text"
+              class="form-control"
+              aria-describedby="emailHelp"
+              placeholder="<%= data.fullName %>"
+              value="<%= data.fullName %>"
+              name="username"
+            />
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Tên lớp</label>
+            <input
+              type="text"
+              class="form-control"
+              aria-describedby="emailHelp"
+              placeholder="<%= data.className %>"
+              value="<%= data.className %>"
+              name="userclass"
+            />
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Mật khẩu</label>
+            <input
+              type="password"
+              class="form-control"
+              id="exampleInputPassword1"
+              placeholder="<%= data.password %>"
+              value="<%= data.password %>"
+              name="password"
+            />
+          </div>
+          <button
+            type="submit"
+            class="btn btn-primary btn-login"
+            style="
+              width: 100%;
+              background-color: #2f2e7d;
+              border: 1px solid #2f2e7d;
+            "
+          >
+            Cập nhật tài khoản
+          </button>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

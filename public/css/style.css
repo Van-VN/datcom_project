@@ -350,7 +350,8 @@ hr {
 }
 
 .footer-contain p,
-.footer-contain h3 {
+.footer-contain h3,
+.footer-right h6 {
   color: white;
 }
 
@@ -365,6 +366,10 @@ hr {
   padding: 1;
   border: none;
   width: 100%;
+}
+
+.footer-right hr {
+  border-top: 1px solid rgba(255, 255, 255, 0.253);
 }
 
 @media screen and (max-width: 990px) {

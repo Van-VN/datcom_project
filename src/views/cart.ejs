@@ -29,6 +29,7 @@
           <% if(alert) { %>
             <p style="color: red"><%= alert %></p>
           <% } %>
+          <% if(data.foods) { %> 
           <% if(data.foods.length > 0) { %>
               <% data.foods.forEach((item) => { %>
                 <% if(item.food.status) { %>
@@ -68,7 +69,7 @@
                   </div>
                 <% } %>
               <% }) %>
-          <% } else { %>
+          <% }} else { %>
           <h6 style="margin-bottom: 20px">
             Rỏ hàng hiện tại đang trống, vào <a href="/">đây</a> để mua hàng
             ngay!

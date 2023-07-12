@@ -24,43 +24,47 @@
           <h1 style="margin-bottom: 10px">Thông tin đơn hàng</h1>
           <hr />
           <% if(alert) { %>
-          <p style="color: red"><%= alert %></p>
-          <% } %> <% if(data.length > 0) { %> <% data.forEach((item) => { %> <%
-          if(item.foods[0].food.status) { %>
-          <input
-            type="text"
-            name="foodName"
-            style="display: none"
-            value="<%= item.foods[0].food.name %>"
-          />
-          <input
-            type="text"
-            name="foodType"
-            style="display: none"
-            value="<%= item.foods[0].food.type %>"
-          />
-          <div id="<%=item._id%>" >
-            <div class="order-card">
-              <img
-                src="<%= item.foods[0].food.imageUrl %>"
-                alt="<%= item.foods[0].food.name %>"
-              />
-              <div>
-                <h4><%= item.foods[0].food.name %></h4>
-                <p>Order vào lúc: <%= item.dateOrder.toDateString() %></p>
-                <h6><%= item.foods[0].food.type %></h6>
-                <button class="btn btn-danger delete-cart"
-                        data-id="<%= item.id %>"
-                        user-id="<%= locals.userLogin.id %>"
-                        style="width: 50%"
-                        type="button">
-                  Xoá món ăn
-                </button>
+            <p style="color: red"><%= alert %></p>
+          <% } %>
+          <% if(data.foods.length > 0) { %>
+              <% data.foods.forEach((item) => { %> <%
+                if(item.food.status) { %>
+              <div id="<%=item.food.id%>" >
+                <div class="order-card">
+                  <img
+                    src="<%= item.food.imageUrl %>"
+                    alt="<%= item.food.name %>"
+                  />
+                  <div>
+                    <h4><%= item.food.name %></h4>
+                    <p>Order vào lúc: <%= data.createAt.toDateString()%></p>
+                    <h6><%= item.food.type %></h6>
+                    <div class="form-group col-md flex-grow-0">
+                      <div class="qty-input input-group input-spinner">
+                        <div class="input-group-prepend">
+                          <button class="qty-count qty-count--minus btn btn-light minus" data-id="<%=item._id%>" data-action="minus" type="button">-</button>
+                        </div>
+                        <input class="product-qty form-control number" id="<%=item._id%>" type="text" name="quantity" min="1" max="3" value="<%= item.quantity%>">
+                        <div class="input-group-prepend">
+                          <button class="qty-count qty-count--add btn btn-light plus" data-id="<%=item._id%>" data-action="add" type="button">+</button>
+                        </div>
+                      </div>
+                    </div> <!-- col.// -->
+                    <button class="btn btn-danger delete-cart"
+                            data-id="<%= data._id %>"
+                            food-id="<%= item.food.id %>"
+                            user-id="<%= locals.userLogin.id %>"
+                            style="width: 50%"
+                            type="button">
+                      Xoá món ăn
+                    </button>
+                  </div>
+                </div>
+                <hr />
               </div>
-            </div>
-            <hr />
-          </div>
-          <% } %> <% }) %> <% } else { %>
+            <% } %>
+              <% }) %>
+          <% } else { %>
           <h6 style="margin-bottom: 20px">
             Rỏ hàng hiện tại đang trống, vào <a href="/">đây</a> để mua hàng
             ngay!
@@ -79,22 +83,24 @@
         if (wantDelete){
           const idFood = $(this).attr('data-id');
           const userId = $(this).attr('user-id');
+          const foodId = $(this).attr('food-id');
           if(!userId) {
             top.location.href="login";
             return;
           }
           const origin = location.origin;
-          console.log(`${origin}/order/delete/${idFood}`);
           $.ajax({
             url: `${origin}/order/delete/${idFood}`,
             data: {
               id: idFood,
-              userId: userId
+              userId: userId,
+              foodId: foodId
             },
             method: "POST",
             success: (response) => {
               if (response._id.length > 0) {
                 $(`#${response._id}`).remove();
+                updateCartCount();
               } else {
                 top.location.href="/";
                 return;
@@ -104,6 +110,24 @@
         }
 
       })
+      $(document).ready(function(){
+        $(".plus").click(function(){
+          let id = $(this).attr("data-id");
+          let val= $(`#${id}`).val();
+          val++;
+          if(val > 0 && val <= 3){
+            $(`#${id}`).val(val);
+          }
+        });
+        $(".minus").click(function(){
+          let id = $(this).attr("data-id");
+          let val = $(`#${id}`).val();
+          val--;
+          if(val > 0){
+            $(`#${id}`).val(val);
+          }
+        })
+      });
   </script>
 </html>
 

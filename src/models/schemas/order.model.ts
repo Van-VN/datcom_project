@@ -10,6 +10,7 @@ const orderSchema = new Schema({
         }
     ],
     userID: {type: Schema.Types.ObjectId, ref: 'User'},
+    status:  { type: String, default: "waiting" },
     createAt: { type: Date, default: Date.now },
 })
 

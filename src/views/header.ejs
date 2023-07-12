@@ -1,5 +1,5 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-light navbar-fixed-top">
   <a class="navbar-brand" href="/">
     <img
       src="https://firebasestorage.googleapis.com/v0/b/dat-com-6b42f.appspot.com/o/files%2Flogo-dat-com.png?alt=media&token=b175307c-f390-46e8-9ef8-69f36a1d9949"
@@ -27,19 +27,19 @@
     </div>
     <div class="login-group">
       <!-- <form class="form-inline"> -->
-        <input
-          class="form-control mr-sm-2 search-bar"
-          type="search"
-          id="searchFood"
-          placeholder="Tìm theo tên món ăn, bấm Enter để tìm kiếm"
-          aria-label="Search"
-          name="search"
-          onchange="searchFunc()"
-        />
+      <input
+        class="form-control mr-sm-2 search-bar"
+        type="search"
+        id="searchFood"
+        placeholder="Tìm theo tên món ăn, bấm Enter để tìm kiếm"
+        aria-label="Search"
+        name="search"
+        onchange="searchFunc()"
+      />
       <!-- </form> -->
       <div style="position: relative">
-        <p class="btn btn-x" id="cart-counter"></p>
         <a href="/cart">
+          <p class="btn btn-x" id="cart-counter"></p>
           <i
             class="fa fa-shopping-cart"
             style="font-size: 24px; color: #2f2e7d"
@@ -59,7 +59,6 @@
   </div>
 </nav>
 <script>
-
   function checkLogin(callback) {
     $.get("/checklogin", function (results) {
       callback(results);

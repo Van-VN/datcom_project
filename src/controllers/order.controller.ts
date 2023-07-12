@@ -40,7 +40,7 @@ class OrderController {
     try {
       if (req.user) {
         const userId = req.user.id;
-        const order = await Order.find({ userID: userId })
+        const order = await Order.find({ userID: userId , status: "waiting"})
         let count = 0;
         const now = new Date().toDateString();
         let food = order[order.length - 1];
@@ -127,13 +127,13 @@ class OrderController {
             alert.errors = '"Đặt tối đa 3 món mặn!"'
           } else {
             order.status = "success"
-            if (order.save){
-              alert.success = 'Đặt thành công! VUi lòng vào phần User Dashboard đẻ kiêm tra thông tin'
+            if (order.save()){
+              alert.success = 'Đặt thành công! VUi lòng vào phần User Dashboard để kiểm tra thông tin'
             } else {
               alert.errors = 'Đặt thất bại!'
             }
           }
-          res.render("cart", {alert: alert })
+          res.render("cart", {alert: alert, data: order})
         }
       }
     } catch (err) {

@@ -22,47 +22,51 @@
       <div class="order-container">
         <form action="/cart" method="post">
           <h1 style="margin-bottom: 10px">Thông tin đơn hàng</h1>
+          <div class="text-center text-danger error"></div>
           <hr />
+          <% let contVegetable = 0 %>
+          <% let countMeat = 0 %>
           <% if(alert) { %>
             <p style="color: red"><%= alert %></p>
           <% } %>
           <% if(data.foods.length > 0) { %>
-              <% data.foods.forEach((item) => { %> <%
-                if(item.food.status) { %>
-              <div id="<%=item.food.id%>" >
-                <div class="order-card">
-                  <img
-                    src="<%= item.food.imageUrl %>"
-                    alt="<%= item.food.name %>"
-                  />
-                  <div>
-                    <h4><%= item.food.name %></h4>
-                    <p>Order vào lúc: <%= data.createAt.toDateString()%></p>
-                    <h6><%= item.food.type %></h6>
-                    <div class="form-group col-md flex-grow-0">
-                      <div class="qty-input input-group input-spinner">
-                        <div class="input-group-prepend">
-                          <button class="qty-count qty-count--minus btn btn-light minus" data-id="<%=item._id%>" data-action="minus" type="button">-</button>
-                        </div>
-                        <input class="product-qty form-control number" id="<%=item._id%>" type="text" name="quantity" min="1" max="3" value="<%= item.quantity%>">
-                        <div class="input-group-prepend">
-                          <button class="qty-count qty-count--add btn btn-light plus" data-id="<%=item._id%>" data-action="add" type="button">+</button>
-                        </div>
+              <% data.foods.forEach((item) => { %>
+                <% if(item.food.status) { %>
+                  <div id="<%=item.food.id %>">
+                    <div class="order-card">
+                      <img
+                        src="<%= item.food.imageUrl %>"
+                        alt="<%= item.food.name %>"
+                      />
+                      <div>
+                        <h4><%= item.food.name %></h4>
+                        <p>Order vào lúc: <%= data.createAt.toDateString()%></p>
+                        <h6><%= item.food.type %></h6>
+                        <div class="form-group col-md flex-grow-0">
+                          <div class="qty-input input-group input-spinner">
+                            <div class="input-group-prepend">
+                              <button class="qty-count qty-count--minus btn btn-light minus foodQuantity"  value="difference" data-id="<%=item.food._id%>" order-id="<%= data.id %>" data-action="minus" type="button">-</button>
+                            </div>
+                            <div class="product-qty form-control number quantityFood" data-type="<%=item.food.type%>" id="count-<%=item.food._id%>" type="text" name="quantity">  <%= item.quantity %></div>
+<!--                            <input class="product-qty form-control number quantityFood" data-type="<%=item.food.type%>" id="<%=item._id%>" type="text" name="quantity" min="1" max="3" value="<%= item.quantity %>">-->
+                            <div class="input-group-prepend">
+                              <button class="qty-count qty-count--add btn btn-light plus foodQuantity" value="total" data-id="<%=item.food._id%>" data-action="add" order-id="<%= data.id %>" type="button">+</button>
+                            </div>
+                          </div>
+                        </div> <!-- col.// -->
+                        <button class="btn btn-danger delete-cart"
+                                data-id="<%= data._id %>"
+                                food-id="<%= item.food.id %>"
+                                user-id="<%= locals.userLogin.id %>"
+                                style="width: 50%"
+                                type="button">
+                          Xoá món ăn
+                        </button>
                       </div>
-                    </div> <!-- col.// -->
-                    <button class="btn btn-danger delete-cart"
-                            data-id="<%= data._id %>"
-                            food-id="<%= item.food.id %>"
-                            user-id="<%= locals.userLogin.id %>"
-                            style="width: 50%"
-                            type="button">
-                      Xoá món ăn
-                    </button>
+                    </div>
+                    <hr />
                   </div>
-                </div>
-                <hr />
-              </div>
-            <% } %>
+                <% } %>
               <% }) %>
           <% } else { %>
           <h6 style="margin-bottom: 20px">
@@ -70,7 +74,7 @@
             ngay!
           </h6>
           <% } %>
-          <button type="submit" class="btn btn-primary btn-admin">
+          <button type="submit" class="btn btn-primary btn-admin" id="submit-order">
             Thanh toán
           </button>
         </form>
@@ -78,6 +82,7 @@
     </div>
   </body>
   <script>
+
       $('.delete-cart').click(function() {
         let wantDelete = confirm("Want to delete?");
         if (wantDelete){
@@ -101,6 +106,7 @@
               if (response._id.length > 0) {
                 $(`#${response._id}`).remove();
                 updateCartCount();
+                CheckErros();
               } else {
                 top.location.href="/";
                 return;
@@ -111,23 +117,67 @@
 
       })
       $(document).ready(function(){
-        $(".plus").click(function(){
+        $(".foodQuantity").click(function(){
           let id = $(this).attr("data-id");
-          let val= $(`#${id}`).val();
-          val++;
-          if(val > 0 && val <= 3){
-            $(`#${id}`).val(val);
+          let orderId = $(this).attr("order-id");
+          let math = $(this).val();
+          let val = $(`#${id}`).val();
+          $.ajax({
+            url: `${origin}/order/update-count/${orderId}`,
+            data: {
+              id: orderId,
+              foodId: id,
+              math: math
+            },
+            method: "POST",
+            success: (response) => {
+              console.log($(`#${id}`).val());
+              $(`#count-${id}`).text(response.quantity);
+              updateCartCount();
+              CheckErros();
+            }
+          })
+
+          // val++;
+          // if(val > 0 && val <= 3){
+          //   $(`#${id}`).val(val);
+          // }
+
+        });
+
+      });
+      function CheckErros() {
+        $('.error').empty();
+        let vegetables = 0
+        let meat = 0
+        let disabled = false
+        $('.quantityFood').each(function() {
+          if (!isNaN($(this).val())) {
+            if ($(this).attr('data-type') === "Món thịt"){
+              meat += Number($(this).text())
+            } else if ($(this).attr('data-type') == "Món rau") {
+              vegetables += Number($(this).text())
+            }
           }
         });
-        $(".minus").click(function(){
-          let id = $(this).attr("data-id");
-          let val = $(`#${id}`).val();
-          val--;
-          if(val > 0){
-            $(`#${id}`).val(val);
-          }
-        })
-      });
+        if ((vegetables + meat) < 4 ){
+          $('<p>bạn chưa đặt đủ món!</p>').appendTo('.error');
+          disabled = true;
+        } else if ((vegetables + meat) > 4){
+          $('<p>Chỉ đặt tối đa 4 món thôi!</p>').appendTo('.error');
+          disabled = true;
+        }
+        if (meat > 3 ){
+          $('<p>Tối đa 3 món mặn thôi!</p>').appendTo('.error');
+          disabled = true;
+        }
+        if(disabled){
+          $('#submit-order').prop('disabled', true);
+        } else {
+          $('#submit-order').prop('disabled', false);
+        }
+      }
+      CheckErros()
   </script>
 </html>
 

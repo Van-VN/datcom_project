@@ -91,7 +91,6 @@ class OrderController {
           if (updatedProductCart) {
             return res.json(food);
           }
-
       } else {
         return res.json('please login');
       }
@@ -135,6 +134,27 @@ class OrderController {
     } catch (err) {
       console.log(err.message);
       res.render("404");
+    }
+  }
+
+  static async UpdateCount(req:any , res:any){
+    let {id, foodId, math} = req.body
+    let order = await Order.findOne({userID: req.user.id, _id: id}).populate(
+        "foods.food"
+    );;
+    if (order) {
+      let food = order.foods.find(item => item.food._id.toString() === foodId);
+      if (food) {
+        if (math == 'difference' && food.quantity > 1){
+          food.quantity = food.quantity - 1
+        } else if ( math == 'total' && food.quantity < 4){
+          food.quantity = food.quantity + 1
+        }
+        await order.save()
+      }
+      return res.json(food)
+    } else {
+      res.send('error')
     }
   }
 }

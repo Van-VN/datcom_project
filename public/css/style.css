@@ -372,6 +372,41 @@ hr {
   border-top: 1px solid rgba(255, 255, 255, 0.253);
 }
 
+.delete-cart {
+  font-size: 16px !important;
+  margin-top: 10px;
+}
+
+.input-group {
+  /* justify-content: center; */
+  align-items: center;
+}
+
+.qty-count--add {
+  max-height: auto;
+  padding: 8px;
+}
+
+.foodQuantity {
+  /* height: auto; */
+  padding: 0 4px !important;
+  min-width: 30px;
+}
+
+.navbar {
+  position: sticky;
+  z-index: 1000;
+  width: 100vw;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  background-color: white;
+}
+
+.flex-grow-0 {
+  padding-left: 0;
+}
+
 @media screen and (max-width: 990px) {
   .card-body {
     max-height: fit-content;

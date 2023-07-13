@@ -416,6 +416,34 @@ hr {
   }
 }
 
+@media only screen and (max-width: 1024px) {
+  .search-bar {
+    min-width: auto;
+  }
+
+  .row {
+    display: inline-block;
+    width: 100%;
+    padding: 10px;
+    margin: 0;
+  }
+
+  .admin-right {
+    margin: 0;
+    max-width: 100%;
+    padding: 20px;
+  }
+
+  .admin-left {
+    display: inline-block;
+    max-width: 100%;
+  }
+
+  .btn-admin {
+    width: fit-content !important;
+  }
+}
+
 @media only screen and (max-width: 600px) {
   .comment-group {
     display: block;
@@ -508,7 +536,7 @@ hr {
 
   .btn-add {
     padding: 10px 20px;
-    margin-right: 10px;
+    /* margin-right: 10px; */
   }
 
   #searchFood,

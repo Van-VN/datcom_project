@@ -8,4 +8,5 @@ const userSchema = new Schema({
   className: String,
 });
 const User = model("user", userSchema);
+
 export default User;

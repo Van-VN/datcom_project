@@ -28,7 +28,39 @@
           >Đổi mật khẩu</a
         >
       </div>
-      <div class="col-sm-8 admin-right">col-sm-8</div>
+      <div class="col-sm-8 admin-right">
+        <table class="table table-striped">
+          <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Tên Món</th>
+            <th scope="col">Ngày đặt</th>
+            <th scope="col">Trạng thái</th>
+            <th scope="col" colspan="2">&nbsp;</th>
+          </tr>
+          </thead>
+          <tbody>
+          <% data.forEach((item, index) => { %>
+            <tr>
+              <th scope="row"><%= index + 1 %></th>
+              <td>
+                <% item.foods.forEach(food => { %>
+                  <p>
+                    <%= food.quantity %> x  <%= food.food.name %>
+                  </p>
+                <% }) %>
+              </td>
+              <td><%= item.createAt.toLocaleString() %></td>
+              <td><%= (item.status == "success"  ? "Đang đợi giao": "Đã giao")%></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+          <% }) %>
+          </tbody>
+        </table>
+
+      </div>
     </div>
   </body>
 </html>

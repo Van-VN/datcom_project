@@ -40,7 +40,7 @@ class OrderController {
     try {
       if (req.user) {
         const userId = req.user.id;
-        const order = await Order.find({ userID: userId })
+        const order = await Order.find({ userID: userId , status: "waiting"})
         let count = 0;
         const now = new Date().toDateString();
         let food = order[order.length - 1];
@@ -102,34 +102,39 @@ class OrderController {
   static async checkOut(req: any, res: any) {
     try {
       const userId = req.user.id;
-      const foods = await Order.find({ userID: userId }).populate("foods.food");
-      let data = [];
-      const now = new Date().toDateString();
-      foods.forEach((item) => {
-        if (item.dateOrder.toDateString() === now) {
-          data.push(item);
+      const today = new Date();
+      const startOfDay = new Date(today.getFullYear(), today.getMonth(), today.getDate(), 0, 0, 0);
+      const endOfDay = new Date(today.getFullYear(), today.getMonth(), today.getDate(), 23, 59, 59);
+      const order = await Order.findOne({
+        userID: userId,
+        createAt: { $gte: startOfDay, $lte: endOfDay }
+      }).populate("foods.food");
+      if (order){
+        let foods = order.foods
+        let countFood = foods.reduce((total, item) => total + item.quantity, 0)
+        let alert = {errors: "", success:""}
+        let failCheck = false
+        foods.forEach((item) => {
+          // @ts-ignore
+          if (item.food.type == "Món thịt" && item.quantity > 3 ){
+            failCheck = true
+          }
+        })
+        if (countFood > 4){
+          alert.errors = "Đặt tối đa 4 món!"
+        } else if (countFood == 4){
+          if (failCheck) {
+            alert.errors = '"Đặt tối đa 3 món mặn!"'
+          } else {
+            order.status = "success"
+            if (order.save()){
+              alert.success = 'Đặt thành công! VUi lòng vào phần User Dashboard để kiểm tra thông tin'
+            } else {
+              alert.errors = 'Đặt thất bại!'
+            }
+          }
+          res.render("cart", {alert: alert, data: order})
         }
-      });
-      let failCheck = 0;
-      let foodArray = req.body.foodType;
-      foodArray.forEach((item) => {
-        if (item === "Món thịt") {
-          failCheck++;
-        }
-      });
-      if (foodArray.length > 4) {
-        const alert = "Đặt tối đa 4 món!";
-        res.render("cart", { data: data, alert: alert });
-      } else if (failCheck > 3) {
-        const alert = "Đặt tối đa 3 món thịt!";
-        res.render("cart", { data: data, alert: alert });
-      } else {
-        // foods.status = "accepted"
-        // if ( await foods.save()){
-        //
-        // }
-        console.log(req.body)
-        //   Xử lý logic khi book thành công tại đây!
       }
     } catch (err) {
       console.log(err.message);
@@ -141,7 +146,7 @@ class OrderController {
     let {id, foodId, math} = req.body
     let order = await Order.findOne({userID: req.user.id, _id: id}).populate(
         "foods.food"
-    );;
+    );
     if (order) {
       let food = order.foods.find(item => item.food._id.toString() === foodId);
       if (food) {

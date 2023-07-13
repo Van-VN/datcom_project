@@ -53,6 +53,7 @@ adminRouter.post(
 );
 adminRouter.post("/admin/closeorder", AdminController.closeOrder);
 adminRouter.get("/admin/user", AdminController.showUserList);
+adminRouter.get("/admin/list", AdminController.showListOrder);
 adminRouter.get("/admin/user/edit/:id", checkUrl, AdminController.showUserEdit);
 adminRouter.post("/admin/user/edit/:id", checkUrl, AdminController.updateUser);
 adminRouter.get("/admin/user/delete/:id", checkUrl, AdminController.deleteUser);

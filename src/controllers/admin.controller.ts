@@ -8,6 +8,7 @@ import {
   getDownloadURL,
   uploadBytesResumable,
 } from "firebase/storage";
+import {Order} from "../models/schemas/order.model";
 
 initializeApp(config.firebaseConfig);
 const storage = getStorage();
@@ -193,10 +194,27 @@ class AdminController {
     const food = await Food.find();
     if (food) {
       await Food.updateMany({}, { $set: { status: req.body.state } });
+      // await Order.updateMany({createAt: { $gte: startOfDay, $lte: endOfDay }}, { $set: { status: "done" } });
       res.redirect("/admin/food");
     } else {
       res.render("404");
     }
+  }
+
+  static async showListOrder(req: any, res: any){
+    try {
+      const today = new Date();
+      const startOfDay = new Date(today.getFullYear(), today.getMonth(), today.getDate(), 0, 0, 0);
+      const endOfDay = new Date(today.getFullYear(), today.getMonth(), today.getDate(), 23, 59, 59);
+      // const orders = await Order.find({createAt: { $gte: startOfDay, $lte: endOfDay }, status: "success"}).populate('User');
+      const orders = await Order.find({ createAt: { $gte: startOfDay, $lte: endOfDay }, status: "success" }).populate('userID').populate('foods.food');
+
+      console.log(orders[0].userID);
+      res.render("adminViews/adminOrdersList", {data: orders});
+    } catch (err) {
+      console.log(err.message);
+    }
+
   }
 }
 

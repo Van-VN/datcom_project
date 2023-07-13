@@ -9,7 +9,7 @@ const orderSchema = new Schema({
             imgUrl: String,
         }
     ],
-    userID: {type: Schema.Types.ObjectId, ref: 'User'},
+    userID: {type: Schema.Types.ObjectId, ref: 'user'},
     status:  { type: String, default: "waiting" },
     createAt: { type: Date, default: Date.now },
 })

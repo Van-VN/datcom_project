@@ -1,4 +1,5 @@
 import User from "../models/schemas/user.model";
+import {Order} from "../models/schemas/order.model";
 
 class UserController {
   static async showLoginForm(req: any, res: any) {
@@ -9,9 +10,17 @@ class UserController {
     res.redirect("/");
   }
 
-  static showUserPage(req: any, res: any) {
+  static async showUserPage(req: any, res: any) {
     try {
-      res.render("user");
+      if (req.user){
+        const userId = req.user.id;
+        const order = await Order.find({ userID: userId , status: "success"}).populate(
+            "foods.food"
+        ).sort({ createAt: -1 });
+         res.render("user", {data: order});
+      } else {
+        res.redirect("/");
+      }
     } catch (err) {
       console.log(err.message);
     }

@@ -4,6 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const user_model_1 = __importDefault(require("../models/schemas/user.model"));
+const order_model_1 = require("../models/schemas/order.model");
 class UserController {
     static async showLoginForm(req, res) {
         res.render("login", { data: null });
@@ -11,9 +12,16 @@ class UserController {
     static getUserInfo(req, res) {
         res.redirect("/");
     }
-    static showUserPage(req, res) {
+    static async showUserPage(req, res) {
         try {
-            res.render("user");
+            if (req.user) {
+                const userId = req.user.id;
+                const order = await order_model_1.Order.find({ userID: userId, status: "success" }).populate("foods.food").sort({ createAt: -1 });
+                res.render("user", { data: order });
+            }
+            else {
+                res.redirect("/");
+            }
         }
         catch (err) {
             console.log(err.message);

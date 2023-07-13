@@ -8,6 +8,7 @@ const user_model_1 = __importDefault(require("../models/schemas/user.model"));
 const app_1 = require("firebase/app");
 const firebase_config_1 = __importDefault(require("../../firebase.config"));
 const storage_1 = require("firebase/storage");
+const order_model_1 = require("../models/schemas/order.model");
 (0, app_1.initializeApp)(firebase_config_1.default.firebaseConfig);
 const storage = (0, storage_1.getStorage)();
 class AdminController {
@@ -185,6 +186,19 @@ class AdminController {
         }
         else {
             res.render("404");
+        }
+    }
+    static async showListOrder(req, res) {
+        try {
+            const today = new Date();
+            const startOfDay = new Date(today.getFullYear(), today.getMonth(), today.getDate(), 0, 0, 0);
+            const endOfDay = new Date(today.getFullYear(), today.getMonth(), today.getDate(), 23, 59, 59);
+            const orders = await order_model_1.Order.find({ createAt: { $gte: startOfDay, $lte: endOfDay }, status: "success" }).populate('userID').populate('foods.food');
+            console.log(orders[0].userID);
+            res.render("adminViews/adminOrdersList", { data: orders });
+        }
+        catch (err) {
+            console.log(err.message);
         }
     }
 }

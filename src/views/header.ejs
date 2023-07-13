@@ -94,6 +94,10 @@
 
   function renderSearchResults(results) {
     let html = "";
+    let user = `<% if(locals.userLogin) { %> 
+                user-id='<%= locals.userLogin.id %>'
+              <% } %>`;
+
     results.forEach((item) => {
       if (item.status) {
         html += `<div class="card">
@@ -111,9 +115,9 @@
             <h6 class="card-title">${item.type}</h6>
             <p class="card-text">${item.des}</p>
 
-            <button class="btn btn-primary btn-add add-cart" data-id="${
+            <button type="button" class="btn btn-primary btn-add add-cart" data-id="${
               item._id
-            }">
+            }" ${user}>
               Đặt món
             </button>
           </div>

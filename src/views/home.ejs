@@ -63,7 +63,7 @@
   </body>
   <script>
 
-    $('.add-cart').click(function() {
+    $(document).on('click', '.add-cart' , function() {
       const id = $(this).attr('data-id');
       console.log(id);
       const userId = $(this).attr('user-id');

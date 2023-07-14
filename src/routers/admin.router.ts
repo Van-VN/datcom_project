@@ -25,6 +25,7 @@ import userRouter from "./user.router";
 adminRouter.use(blockSwitchFromCusMiddleware);
 adminRouter.use(checkAdmin);
 adminRouter.get("/admin", AdminController.showFoodList);
+adminRouter.get('/admin/page/:id', AdminController.pagination);
 adminRouter.get("/admin/user/create", AdminController.showCreateUser);
 adminRouter.post("/admin/user/create", AdminController.createUser);
 adminRouter.get("/admin/create", AdminController.getCreatePage);

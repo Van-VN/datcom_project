@@ -9,6 +9,7 @@ declare class AdminController {
     static getCreatePage(req: any, res: any): Promise<void>;
     static createFood(req: any, res: any): Promise<void>;
     static showFoodList(req: any, res: any): Promise<void>;
+    static pagination(req: any, res: any): Promise<any>;
     static showUpdateFood(req: any, res: any): Promise<void>;
     static updateFood(req: any, res: any): Promise<void>;
     static deleteFood(req: any, res: any): Promise<void>;

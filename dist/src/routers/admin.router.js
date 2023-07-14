@@ -21,6 +21,7 @@ const checkLogin_middleware_1 = __importDefault(require("../middlewares/checkLog
 adminRouter.use(checkLogin_middleware_1.default);
 adminRouter.use(checkAdmin_middleware_1.default);
 adminRouter.get("/admin", admin_controller_1.default.showFoodList);
+adminRouter.get('/admin/page/:id', admin_controller_1.default.pagination);
 adminRouter.get("/admin/user/create", admin_controller_1.default.showCreateUser);
 adminRouter.post("/admin/user/create", admin_controller_1.default.createUser);
 adminRouter.get("/admin/create", admin_controller_1.default.getCreatePage);

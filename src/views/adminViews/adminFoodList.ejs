@@ -65,7 +65,7 @@
               <th scope="col" colspan="2">&nbsp;</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody id="admin-food-table">
             <% data.forEach((item, index) => { %>
             <tr>
               <th scope="row"><%= index +1 %></th>
@@ -106,10 +106,82 @@
             <% }) %>
           </tbody>
         </table>
+
+        <nav aria-label="Page navigation example">
+          <ul class="pagination">
+            <% if(pages) { %>
+            <% for(let i = 1; i <= pages; i++) { %>
+            <li class="page-item"><a class="page-link" page-id="<%= i %>"><%= i %></a></li>
+            <% }} %>
+          </ul>
+        </nav>
+
       </div>
     </div>
   </body>
   <script>
+
+    $(document).on('click', '.page-link', function() {
+      const page = $(this).attr('page-id');
+      const origin = location.origin;
+      $.ajax({
+        url: `${origin}/admin/page/${page}`,
+        method: "GET",
+        success: (response) => {
+          console.log(response);
+          paginationRender(response, page)
+        }
+      })
+    })
+
+    function paginationRender(results, page) {
+      let html = '';
+      results.forEach((item, index) => {
+        let state = ''
+        if(item.status) {
+          state = 'checked'
+        }
+        html += `<tr>
+              <th scope="row">${index + 1 + (page-1)* 10}</th>
+              <td>${item.name}</td>
+              <td>${item.type}</td>
+              <td>
+                <img src="${item.imageUrl}" alt="${item.name}" height="50px" />
+              </td>
+              <td>
+                <label class="switch">
+                  <input
+                    type="checkbox"
+                    name="toggle"
+                    id="${item._id}"
+                    onchange="getStatus('${item._id}')"
+                    data-id="${item._id}"
+                    ${state}>
+                  <span class="slider round"></span>
+                </label>
+              </td>
+              <td>
+                <a
+                  href="/admin/food/edit/${item._id}"
+                  class="btn btn-success"
+                  >Edit</a
+                >
+              </td>
+              <td>
+                <a
+                  href="/admin/food/delete/${item._id}"
+                  class="btn btn-danger"
+                  onclick="return confirm('Bạn có chắc muốn xóa món ăn này?')"
+                  >Delete</a
+                >
+              </td>
+            </tr>
+            `
+      });
+      // console.log(html);
+      $('#admin-food-table').html(html);
+    }
+
     function getStatus(id) {
       const state = document.getElementById(id).checked;
       $.ajax({

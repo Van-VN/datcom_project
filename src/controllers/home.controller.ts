@@ -91,6 +91,11 @@ class HomeController {
     const results = await Food.find({ type: "Món rau" });
     return res.json(results);
   }
+
+  static async allSort(req: any, res: any) {
+    const results = await Food.find();
+    return res.json(results);
+  }
 }
 
 export default HomeController;

@@ -9,7 +9,7 @@ import HomeController from "./src/controllers/home.controller";
 import orderRouter from "./src/routers/order.router";
 import passport from "passport";
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 import session from "express-session";
 const db = new ConnectDB();
 db.connect()

@@ -439,6 +439,10 @@ hr {
     max-width: 100%;
   }
 
+  .card-body {
+    max-height: fit-content;
+  }
+
   .btn-admin {
     width: fit-content !important;
   }

@@ -35,11 +35,6 @@ app.use(
   })
 );
 
-app.use(
-  require("connect-livereload")({
-    port: 35729,
-  })
-);
 app.use(passport.initialize());
 app.use(passport.session());
 

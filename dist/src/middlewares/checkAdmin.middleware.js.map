@@ -1,0 +1,1 @@
+{"version":3,"file":"checkAdmin.middleware.js","sourceRoot":"","sources":["../../../src/middlewares/checkAdmin.middleware.ts"],"names":[],"mappings":";;AAAA,MAAM,UAAU,GAAG,UAAU,GAAQ,EAAE,GAAQ,EAAE,IAAS;IACxD,IAAI,GAAG,CAAC,IAAI,CAAC,IAAI,KAAK,OAAO,EAAE;QAC7B,IAAI,EAAE,CAAC;KACR;SAAM;QACL,GAAG,CAAC,MAAM,CAAC,KAAK,CAAC,CAAC;KACnB;AACH,CAAC,CAAC;AAEF,kBAAe,UAAU,CAAC"}

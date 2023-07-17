@@ -34,11 +34,13 @@
         <% data.forEach((item) => { %>
         <div class="card">
           <div class="img_wrapper">
+            <a href="/detail/<%= item._id %>">
             <img
               class="card-img-top"
               src="<%= item.imageUrl %>"
               alt="Card image cap"
             />
+          </a>
           </div>
           <div class="card-body">
             <h5 class="card-title">

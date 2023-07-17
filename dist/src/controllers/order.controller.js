@@ -22,7 +22,9 @@ class OrderController {
                 }
                 let existingOrder = order.foods.find(item => item.food.toString() === id);
                 if (existingOrder) {
-                    existingOrder.quantity = existingOrder.quantity + 1;
+                    if (order.status === 'waiting') {
+                        existingOrder.quantity = existingOrder.quantity + 1;
+                    }
                 }
                 else {
                     order.foods.push({

@@ -8,7 +8,7 @@ import {
   getDownloadURL,
   uploadBytesResumable,
 } from "firebase/storage";
-import {Order} from "../models/schemas/order.model";
+import { Order } from "../models/schemas/order.model";
 
 initializeApp(config.firebaseConfig);
 const storage = getStorage();
@@ -129,13 +129,30 @@ class AdminController {
   static async showFoodList(req: any, res: any) {
     const foods = await Food.find();
     const foodStatus = await Food.find({ status: true });
+    let limit = 10;
+    const totalPages = Math.ceil(foods.length / limit);
     let check;
     if (foodStatus.length === 0) {
       check = false;
     } else {
       check = true;
     }
-    res.render("adminViews/adminFoodList", { data: foods, check: check });
+
+    const data = await Food.find().limit(10);
+
+    res.render("adminViews/adminFoodList", {
+      data: data,
+      check: check,
+      pages: totalPages,
+    });
+  }
+
+  static async pagination(req: any, res: any) {
+    const pageId = req.params.id;
+    let limit = 10;
+    const skip = (pageId - 1) * limit;
+    const foods = await Food.find().limit(limit).skip(skip);
+    return res.json(foods);
   }
 
   static async showUpdateFood(req: any, res: any) {
@@ -201,20 +218,38 @@ class AdminController {
     }
   }
 
-  static async showListOrder(req: any, res: any){
+  static async showListOrder(req: any, res: any) {
     try {
       const today = new Date();
-      const startOfDay = new Date(today.getFullYear(), today.getMonth(), today.getDate(), 0, 0, 0);
-      const endOfDay = new Date(today.getFullYear(), today.getMonth(), today.getDate(), 23, 59, 59);
+      const startOfDay = new Date(
+        today.getFullYear(),
+        today.getMonth(),
+        today.getDate(),
+        0,
+        0,
+        0
+      );
+      const endOfDay = new Date(
+        today.getFullYear(),
+        today.getMonth(),
+        today.getDate(),
+        23,
+        59,
+        59
+      );
       // const orders = await Order.find({createAt: { $gte: startOfDay, $lte: endOfDay }, status: "success"}).populate('User');
-      const orders = await Order.find({ createAt: { $gte: startOfDay, $lte: endOfDay }, status: "success" }).populate('userID').populate('foods.food');
+      const orders = await Order.find({
+        createAt: { $gte: startOfDay, $lte: endOfDay },
+        status: "success",
+      })
+        .populate("userID")
+        .populate("foods.food");
 
       console.log(orders[0].userID);
-      res.render("adminViews/adminOrdersList", {data: orders});
+      res.render("adminViews/adminOrdersList", { data: orders });
     } catch (err) {
       console.log(err.message);
     }
-
   }
 }
 

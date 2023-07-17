@@ -1,5 +1,6 @@
 import Food from "../models/schemas/food.model";
 import User from "../models/schemas/user.model";
+import { Parser } from "json2csv";
 
 class HomeController {
   static async getHomePage(req: any, res: any) {
@@ -90,6 +91,24 @@ class HomeController {
   static async vegSort(req: any, res: any) {
     const results = await Food.find({ type: "Món rau" });
     return res.json(results);
+  }
+
+  static async allSort(req: any, res: any) {
+    const results = await Food.find();
+    return res.json(results);
+  }
+
+  static async exportExcel(req: any, res: any) {
+    const data = await Food.find();
+    const parser = new Parser();
+    const csv = parser.parse(data);
+    res.setHeader("Content-Type", "text/csv");
+    res.setHeader(
+      "Content-Disposition",
+      `attachment; filename=foodexport${Date.now()}.csv`
+    );
+    // Send the CSV data to the client
+    res.send(csv);
   }
 }
 

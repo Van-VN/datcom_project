@@ -26,7 +26,9 @@
       <button class="btn btn-add btn-sort" id="vegsort" onclick="vegsort()">
         Món rau
       </button>
-      <a href="/" class="btn btn-add btn-sort">Tất cả</a>
+      <button class="btn btn-add btn-sort" id="allsort" onclick="allsort()">
+        Tất cả
+      </button>
       <hr />
       <div class="card-form" id="container">
         <% data.forEach((item) => { %>
@@ -89,6 +91,12 @@
 
     function meatsort() {
       $.get("/meatsort", function (results) {
+        $("#container").html(renderSearchResults(results));
+      });
+    }
+
+    function allsort() {
+      $.get("/allsort", function (results) {
         $("#container").html(renderSearchResults(results));
       });
     }

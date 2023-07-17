@@ -21,5 +21,7 @@ router.get(
 router.get("/search", HomeController.searchFood);
 router.get("/meatsort", HomeController.meatSort);
 router.get("/vegsort", HomeController.vegSort);
+router.get("/allsort", HomeController.allSort);
+router.get("/download", HomeController.exportExcel);
 
 export default router;

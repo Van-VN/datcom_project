@@ -2,6 +2,8 @@ import Food from "../models/schemas/food.model";
 import User from "../models/schemas/user.model";
 import { initializeApp } from "firebase/app";
 import config from "../../firebase.config";
+const fs = require('fs');
+
 import {
   getStorage,
   ref,
@@ -9,6 +11,7 @@ import {
   uploadBytesResumable,
 } from "firebase/storage";
 import { Order } from "../models/schemas/order.model";
+import convertJsonToExcel from "../services/exportFIle";
 
 initializeApp(config.firebaseConfig);
 const storage = getStorage();
@@ -245,11 +248,17 @@ class AdminController {
         .populate("userID")
         .populate("foods.food");
 
-      console.log(orders[0].userID);
       res.render("adminViews/adminOrdersList", { data: orders });
     } catch (err) {
       console.log(err.message);
     }
+  }
+
+  static async exportFile(req: any, res: any){
+    await convertJsonToExcel(req,res)
+    res.setHeader('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+    res.setHeader("Content-Disposition", "attachment; filename=" + "demo.xlsx");
+    await res.download('./exportExcel.xlsx');
   }
 }
 

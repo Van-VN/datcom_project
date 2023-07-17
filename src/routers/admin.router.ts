@@ -58,5 +58,5 @@ adminRouter.get("/admin/list", AdminController.showListOrder);
 adminRouter.get("/admin/user/edit/:id", checkUrl, AdminController.showUserEdit);
 adminRouter.post("/admin/user/edit/:id", checkUrl, AdminController.updateUser);
 adminRouter.get("/admin/user/delete/:id", checkUrl, AdminController.deleteUser);
-
+adminRouter.get("/admin/export-file", AdminController.exportFile)
 export default adminRouter;

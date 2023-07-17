@@ -18,7 +18,9 @@ class OrderController {
         }
         let existingOrder = order.foods.find(item => item.food.toString() === id);
         if (existingOrder){
-          existingOrder.quantity = existingOrder.quantity + 1
+          if (order.status === 'waiting'){
+            existingOrder.quantity = existingOrder.quantity + 1
+          }
         } else {
           order.foods.push({
             food: food._id,
@@ -84,13 +86,13 @@ class OrderController {
       let foodId = req.body.foodId
       let food = await Food.findOne({ _id: foodId });
       if (req.user && order.userID.toString() === req.user.id && food) {
-          const updatedProductCart = await Order.findOneAndUpdate(
-              { _id: order._id },
-              { $pull: { foods: { food: foodId } } }
-          );
-          if (updatedProductCart) {
-            return res.json(food);
-          }
+        const updatedProductCart = await Order.findOneAndUpdate(
+            { _id: order._id },
+            { $pull: { foods: { food: foodId } } }
+        );
+        if (updatedProductCart) {
+          return res.json(food);
+        }
       } else {
         return res.json('please login');
       }

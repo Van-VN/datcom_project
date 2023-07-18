@@ -61,14 +61,18 @@
             <% data.forEach((item, index) => { %>
                 <tr>
                     <th scope="row"><%= index + 1 %></th>
-                    <td><%= item.userID.name %> </td>
+                    <td><%= item.userID.fullName %> </td>
                     <td><%= item.userID.className %></td>
                     <td>
+                        <p>
                         <% item.foods.forEach(food => { %>
-                            <p>
-                                <%= food.quantity %> x  <%= food.food.name %>
+                            <% if(food.quantity > 1) { %>
+                                <%= food.quantity %> x  <%= food.food.name %>,
+                                <% } else { %>
+                                    <%= food.food.name %>,
+                                    <% } %>
+                                <% }) %>
                             </p>
-                        <% }) %>
                     </td>
                 </tr>
             <% }) %>

@@ -5,7 +5,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const food_model_1 = __importDefault(require("../models/schemas/food.model"));
 const user_model_1 = __importDefault(require("../models/schemas/user.model"));
-const json2csv_1 = require("json2csv");
 class HomeController {
     static async getHomePage(req, res) {
         try {
@@ -94,14 +93,7 @@ class HomeController {
         const results = await food_model_1.default.find();
         return res.json(results);
     }
-    static async exportExcel(req, res) {
-        const data = await food_model_1.default.find();
-        const parser = new json2csv_1.Parser();
-        const csv = parser.parse(data);
-        res.setHeader("Content-Type", "text/csv");
-        res.setHeader("Content-Disposition", `attachment; filename=foodexport${Date.now()}.csv`);
-        res.send(csv);
-    }
+    static async exportExcel(req, res) { }
 }
 exports.default = HomeController;
 //# sourceMappingURL=home.controller.js.map

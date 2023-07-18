@@ -1,6 +1,7 @@
 import Food from "../models/schemas/food.model";
 import User from "../models/schemas/user.model";
-import { Parser } from "json2csv";
+import xl from "excel4node";
+import mime from "mime-types";
 
 class HomeController {
   static async getHomePage(req: any, res: any) {
@@ -98,18 +99,7 @@ class HomeController {
     return res.json(results);
   }
 
-  static async exportExcel(req: any, res: any) {
-    const data = await Food.find();
-    const parser = new Parser();
-    const csv = parser.parse(data);
-    res.setHeader("Content-Type", "text/csv");
-    res.setHeader(
-      "Content-Disposition",
-      `attachment; filename=foodexport${Date.now()}.csv`
-    );
-    // Send the CSV data to the client
-    res.send(csv);
-  }
+  static async exportExcel(req: any, res: any) {}
 }
 
 export default HomeController;

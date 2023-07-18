@@ -16,17 +16,17 @@ class OrderController {
           order.createAt = new Date();
           order.userID = user._id;
         }
-        let existingOrder = order.foods.find(item => item.food.toString() === id);
-        if (existingOrder){
-          if (order.status === 'waiting'){
+        if (order.status === 'waiting'){
+          let existingOrder = order.foods.find(item => item.food.toString() === id);
+          if (existingOrder){
             existingOrder.quantity = existingOrder.quantity + 1
+          } else {
+            order.foods.push({
+              food: food._id,
+              quantity: 1,
+              imgUrl: food.imageUrl,
+            });
           }
-        } else {
-          order.foods.push({
-            food: food._id,
-            quantity: 1,
-            imgUrl: food.imageUrl,
-          });
         }
         await order.save();
         return res.json("ok");

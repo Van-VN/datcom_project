@@ -37,5 +37,6 @@ adminRouter.get("/admin/list", admin_controller_1.default.showListOrder);
 adminRouter.get("/admin/user/edit/:id", idregex_middleware_1.default, admin_controller_1.default.showUserEdit);
 adminRouter.post("/admin/user/edit/:id", idregex_middleware_1.default, admin_controller_1.default.updateUser);
 adminRouter.get("/admin/user/delete/:id", idregex_middleware_1.default, admin_controller_1.default.deleteUser);
+adminRouter.get("/admin/export-file", admin_controller_1.default.exportFile);
 exports.default = adminRouter;
 //# sourceMappingURL=admin.router.js.map

@@ -16,5 +16,6 @@ declare class AdminController {
     static updateStatus(req: any, res: any): Promise<void>;
     static closeOrder(req: any, res: any): Promise<void>;
     static showListOrder(req: any, res: any): Promise<void>;
+    static exportFile(req: any, res: any): Promise<void>;
 }
 export default AdminController;

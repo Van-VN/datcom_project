@@ -7,8 +7,10 @@ const food_model_1 = __importDefault(require("../models/schemas/food.model"));
 const user_model_1 = __importDefault(require("../models/schemas/user.model"));
 const app_1 = require("firebase/app");
 const firebase_config_1 = __importDefault(require("../../firebase.config"));
+const fs = require('fs');
 const storage_1 = require("firebase/storage");
 const order_model_1 = require("../models/schemas/order.model");
+const exportFIle_1 = __importDefault(require("../services/exportFIle"));
 (0, app_1.initializeApp)(firebase_config_1.default.firebaseConfig);
 const storage = (0, storage_1.getStorage)();
 class AdminController {
@@ -213,12 +215,17 @@ class AdminController {
             })
                 .populate("userID")
                 .populate("foods.food");
-            console.log(orders[0].userID);
             res.render("adminViews/adminOrdersList", { data: orders });
         }
         catch (err) {
             console.log(err.message);
         }
+    }
+    static async exportFile(req, res) {
+        await (0, exportFIle_1.default)(req, res);
+        res.setHeader('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+        res.setHeader("Content-Disposition", "attachment; filename=" + "demo.xlsx");
+        await res.download('./exportExcel.xlsx');
     }
 }
 exports.default = AdminController;

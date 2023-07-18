@@ -39,7 +39,14 @@
         <% const date = new Date();
            const options = { day: '2-digit', month: '2-digit', year: 'numeric' };
         %>
-        <h2>Danh sách đặt ngày <%= date.toLocaleDateString(undefined, options) %></h2>
+        <div class="row ">
+            <div class="col-4">
+                <h2>Danh sách đặt ngày <%= date.toLocaleDateString(undefined, options) %></h2>
+            </div>
+            <div class="col-md-4 offset-md-4">
+                <a href="/admin/export-file" class="btn btn-primary" style="max-width: 200px">import excel</a>
+            </div>
+        </div>
         <br />
         <table class="table table-striped">
             <thead>
